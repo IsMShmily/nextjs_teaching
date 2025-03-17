@@ -90,3 +90,5 @@ layout 会包裹 template，template 又会包裹 page
 <img src="assets/test_01/04.png" style="width:60%">
 
 我们可以看到 `global layout` -> `global template` -> `about layout` -> `about template` -> `about page`
+
+接下来我们编写一个demo来展示 `layout` 和 `template` 他们的对于状态的区别
