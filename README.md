@@ -77,4 +77,16 @@ export default function RootLayout({
 ### 三、template
 模板类似于布局，它也会传入每个子布局或者页面。但不会像布局那样维持状态。
 
+新增[app/template.tsx](app/template.tsx)然后查看 http://localhost:3000/blog 效果如图
+<img src="assets/test_01/03.png" style="width:60%">
 
+我们可以看到他和layout所展示的效果几乎没有任何区别，而他们的包裹关系为：
+
+layout 会包裹 template，template 又会包裹 page
+
+如果您使用过Vue 我们可以吧layout相比与Keep-Alive，而template相比于slot,
+
+如果我们的app/about 也有layout和teamplate 会怎样展示呢？
+<img src="assets/test_01/04.png" style="width:60%">
+
+我们可以看到 `global layout` -> `global template` -> `about layout` -> `about template` -> `about page`
