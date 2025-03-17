@@ -1,10 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Next.js 教学
+Next.js 是基于 React 的全栈框架，专为构建高性能、SEO 友好的现代 Web 应用设计。
 
-## Getting Started
+核心优势：
 
-First, run the development server:
+- 服务端渲染 (SSR) 和 静态站点生成 (SSG)：提升加载速度和SEO。
+
+- 内置路由系统：文件即路由，无需手动配置。
+
+- API 路由：轻松创建后端接口。
+
+- TypeScript 支持、CSS Modules、图像优化等开箱即用功能。
+
+
+## 一、运行
 
 ```bash
+# 下载依赖
+npm i 
+
+# 运行项目
 npm run dev
 # or
 yarn dev
@@ -14,23 +28,16 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 二、学习目录
+### 1、next.js 基础
+- **test_01/page_layout_template_loading**
+  - 文件系统、page、layout、template、loading组件介绍
+- **test_01/layout_template_status_demo**
+  - layout与template组件的区别 `dmeo`
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2、链接与导航介绍
+- **test_02/link_useRouter**
+  - link、useRoouter、redirect的使用
