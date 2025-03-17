@@ -35,6 +35,7 @@ npm run dev
 app/about/page.tsx   ->   http://localhost:3000/about
 app/blog/page.tsx    ->   http://localhost:3000/blog
 ```
+<img src="assets/test_01/02.png" style="width:60%">
 
 ## 二、layout
 ### 1、app/layout
@@ -71,13 +72,9 @@ export default function RootLayout({
 当我们访问 http://localhost:3000/about ，
 会展示 app/layout 和 about/layout中的布局，我们可以看到layout是相互嵌套的
 
-```base
-Main Layout
+<img src="assets/test_01/01.png" style="width:60%">
 
-    About Layout
-
-    About
-```
-
+### 三、template
+模板类似于布局，它也会传入每个子布局或者页面。但不会像布局那样维持状态。
 
 
