@@ -91,4 +91,40 @@ layout 会包裹 template，template 又会包裹 page
 
 我们可以看到 `global layout` -> `global template` -> `about layout` -> `about template` -> `about page`
 
-接下来我们编写一个demo来展示 `layout` 和 `template` 他们的对于状态的区别
+接下来我们编写一个demo来展示 `layout` 和 `template` 他们的对于状态的区别 
+
+见：test_01/layout_template_status_demo 分支，我们可以看到当切换路由的时候，about template 的状态重置为0了
+
+<img src="assets/test_01/05.png" style="width:60%">
+
+## 四、loading
+新增 [app/loading.tsx](app/loading.tsx) 页面
+修改 [app/page.tsx](app/page.tsx)页面
+```ts
+/** 假设为一个获取数字的api */
+const fetch_getNumber = async (): Promise<number> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(1);
+    }, 2000);
+  });
+};
+
+export default async function Home() {
+  /** 调用接口，获取num */
+  const num: number = await fetch_getNumber();
+  /** 先展示 app/loading.tsx 页面，promise进入resolve 状态 展示 app/page.tsx页面 */
+  return (
+    <div className="border-2 border-yellow-500 w-100 h-100">
+      hello next.js Home Page
+      <div>num: {num}</div>
+    </div>
+  );
+}
+
+```
+<img src="assets/test_01/06.png" style="width:60%">
+
+loading.tsx 的实现原理是将 page.tsx和下面的 children 用 <Suspense> 包裹。因为page.js导出一个 async 函数，Suspense 得以捕获数据加载的 promise，
+
+借此实现了 loading 组件的关闭。
