@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### nextjs 官方文档（current branch 对应如下文档）
+- https://nextjs.org/docs/app/getting-started/installation
+- https://nextjs.org/docs/app/getting-started/project-structure
+- https://nextjs.org/docs/app/getting-started/layouts-and-pages
 
-## Getting Started
+--- 
 
-First, run the development server:
+### 一、如何创建router
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Next.js 使用基于文件系统的路由，这意味着您可以使用文件夹和文件来定义路由。
+next.js 约定 使用 page.(js、.jsx、.tsx) 命名为页面
+
+page.js中的代码和平时写react代码一样，例如 [app/page.tsx](app/page.tsx)
+```ts
+export default function Home() {
+  return (
+    <div className="border-2 border-yellow-500 w-100 h-100">
+      hello next.js Home Page
+    </div>
+  );
+}
+
+```
+```yaml
+# 如app目录下 
+app/about/page.tsx   ->   http://localhost:3000/about
+app/blog/page.tsx    ->   http://localhost:3000/blog
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### layout
+app/layout为所有页面根布局，所有的页面都会展示该layout中的内容
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+该组件应接收一个 children prop，chidren 表示子布局（如果有的话）或者子页面。[app/layout.tsx](app/layout.tsx)
+```ts
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+            ...
+            ...
+          {/* 子组件 这里的children 表示子页面 app/page.tsx */}
+          {children}
+        </div>
+      </body>
+    </html>
+  );
+}
+```
+### 三、templage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

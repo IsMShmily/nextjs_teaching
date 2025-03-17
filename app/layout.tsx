@@ -29,6 +29,7 @@ export default function RootLayout({
       >
         <div className="border-2 border-dashed border-white-500 p-2">
           Main Layout
+          {/* 子组件 这里的children 表示子页面 app/page.tsx */}
           {children}
         </div>
       </body>
