@@ -21,6 +21,15 @@ export default function Home() {
 }
 
 ```
+当我们运行
+
+```base
+npm i 
+npm run dev
+```
+  
+  打开浏览器访问 http://localhost:3000/about 可以看到，about和blog渲染了其目录下的page.tsx的内容
+
 ```yaml
 # 如app目录下 
 app/about/page.tsx   ->   http://localhost:3000/about
@@ -60,6 +69,15 @@ export default function RootLayout({
 [app/about/layout.tsx](app/about/layout.tsx)
 
 当我们访问 http://localhost:3000/about ，
-会展示 app/layout 和 about/layout中的布局，我们可以看到布局是相互嵌套的
+会展示 app/layout 和 about/layout中的布局，我们可以看到layout是相互嵌套的
+
+```base
+Main Layout
+
+    About Layout
+
+    About
+```
+
 
 
