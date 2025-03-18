@@ -41,3 +41,11 @@ bun dev
 ### 2、`<Link>`与`useRouter` 介绍
 - **test_02/link_useRouter**
   - link、useRoouter、redirect的使用
+---
+
+
+### 3、next routes 介绍
+- **test_03/routes_detail**
+  - 动态路由、路由组、平行路由、拦截路由讲解
+---
+
