@@ -19,8 +19,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  analytics,
+  team,
 }: Readonly<{
   children: React.ReactNode;
+  analytics: React.ReactNode;
+  team: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -30,6 +34,8 @@ export default function RootLayout({
         <div className="border-2 border-dashed border-white-500 p-2">
           Main Layout
           {children}
+          {analytics}
+          {team}
         </div>
       </body>
     </html>
