@@ -47,5 +47,7 @@ bun dev
 ### 3、next routes 介绍
 - **test_03/routes_detail**
   - 动态路由、路由组、平行路由、拦截路由讲解
+- **test_03/InterceptingRoutes_demo**
+  - 拦截路由 `demo`
 ---
 
