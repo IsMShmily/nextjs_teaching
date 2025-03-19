@@ -219,6 +219,7 @@ const AnalyticsLayout = ({ children }: { children: React.ReactNode }) => {
 export default AnalyticsLayout;
 ```
 当我们点击跳转的时候，对应的页面就会切换，但是这时候当我们刷新页面的时候会展示404，这是为什么呢？该如何解决呢？
+
 <img src="./assets/16.png" alt="" width="60%" />
 
 我们可以在 `【活动状态和导航】` 找到答案！
