@@ -266,3 +266,9 @@ Tip:不匹配路线的404有助于确保您不会在非预期的页面上意外�
 <img src="./assets/19.png" alt="" width="60%" />
 
 `/feed/(..)photo`对应的路由是 `/feed/photo`，要拦截的路由是 `/photo`，两者只差了一个层级，所以使用 `(..)`。
+
+示例demo见：
+- 分支
+  - test_03/InterceptingRoutes_demo
+
+<img src="./assets/20.png" alt="" width="60%" />
