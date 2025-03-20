@@ -1,7 +1,15 @@
-export default function Home() {
+import Link from 'next/link';
+
+export default function Page() {
+  let photos = Array.from({ length: 6 }, (_, i) => i + 1);
+
   return (
-    <div className="border-2 border-yellow-500 w-100 h-100">
-      hello next.js Home Page
-    </div>
+    <section className="cards-container">
+      {photos.map((id) => (
+        <Link className="card" key={id} href={`/photos/${id}`} passHref>
+          {id}
+        </Link>
+      ))}
+    </section>
   );
 }

@@ -1,36 +1,21 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './global.css';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Next.js",
-  description: " Next.js",
+export const metadata = {
+  title: 'Next.js',
+  description:
+    'A sample Next.js app showing dynamic routing with modals as a route.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+export default function RootLayout(props: {
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="border-2 border-dashed border-white-500 p-2">
-          Main Layout
-          {children}
-        </div>
+    <html>
+      <body>
+        {props.children}
+        {props.modal}
+        <div id="modal-root" />
       </body>
     </html>
   );

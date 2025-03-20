@@ -27,25 +27,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
-
-## 二、学习目录
-### 1、`next.js `基础
-- **test_01/page_layout_template_loading**
-  - 文件系统、page、layout、template、loading组件介绍
-- **test_01/layout_template_status_demo**
-  - layout与template组件的区别 `dmeo`
----
-
-### 2、`<Link>`与`useRouter` 介绍
-- **test_02/link_useRouter**
-  - link、useRoouter、redirect的使用
----
-
-
-### 3、next routes 介绍
-- **test_03/routes_detail**
-  - 动态路由、路由组、平行路由、拦截路由讲解
----
-
