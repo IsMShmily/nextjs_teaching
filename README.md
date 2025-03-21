@@ -39,13 +39,13 @@
 
 <img src="assets/01.png" style="width:70%">
 
-- href ： 要导航到的路径或 URL。
+- href ： 要导航到的路径或 `URL`
 
-- replace ： 默认为 false 。当为 true 时， next/link 将替换当前历史记录状态，而不是将新 URL 添加到浏览器的历史记录中堆。
+- replace ： 默认为 `false` 。当为 `true` 时， `next/link` 将替换当前历史记录状态，而不是将新 URL 添加到浏览器的历史记录中堆。
 
-- scroll ： 默认为 true，当 scroll = {false}时，Next.js 将不会尝试滚动到第一个页面元素。
+- scroll ： 默认为 `true` ，当 `scroll = {false}` 时，`Next.js` 将不会尝试滚动到第一个页面元素。
 
-- prefetch ： 当`<Link />`组件进入用户视口（初始或通过滚动）时，就会发生预取。 Next.js 会在后台预取并加载链接的路线（用 href 表示）及其数据，
+- prefetch ： 当`<Link />`组件进入用户视口（初始或通过滚动）时，就会发生预取。 `Next.js` 会在后台预取并加载链接的路线（用 `href` 表示）及其数据，
 
 ### 2、`Link`支持动态渲染
 
@@ -73,7 +73,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
 
 ### 3、使用`usePathname`获取当前路径名
 
-您可以使用 usePathname()来确定链接是否处于活动状态。例如，要向活动链接添加类，您可以检查当前 pathname 是否与链接的 href 匹配，见：[app/about/layout.tsx](app/about/layout.tsx)
+您可以使用 `usePathname()` 来确定链接是否处于活动状态。例如，要向活动链接添加类，您可以检查当前 `pathname` 是否与链接的 `href` 匹配，见：[app/about/layout.tsx](app/about/layout.tsx)
 
 ```tsx
 "use client";
@@ -129,8 +129,7 @@ export default function Home() {
 ```
 
 ```md
-建议：使用<Link>组件进行导航，除非您对使用 useRouter 有特殊要求。
-注意使用该 hook 需要在客户端组件中。（顶层的 'use client' 就是声明这是客户端组件）
+建议：使用<Link>组件进行导航，除非您对使用 `useRouter` 有特殊要求。
 ```
 
 `router.back() `：导航回浏览器历史堆栈中的上一条路由。
@@ -139,16 +138,16 @@ export default function Home() {
 
 `router.replace(href: string, { scroll: boolean }) `：执行到所提供路线的客户端导航，而无需在浏览器的历史记录堆栈中添加新条目。
 
-`router.refresh() ：`刷新当前路由。向服务器发出新请求，重新获取数据请求，并重新渲染服务器组件。客户端将合并更新的 React 服务器组件有效负载，而不会丢失未受影响的客户端 React（例如 useState ）或浏览器状态（例如滚动位置）。
+`router.refresh() ：`刷新当前路由。向服务器发出新请求，重新获取数据请求，并重新渲染服务器组件。客户端将合并更新的 `React` 服务器组件有效负载，而不会丢失未受影响的客户端 `React`（例如 `useState` ）或浏览器状态（例如滚动位置）。
 
 `router.prefetch(href: string) ：`预取提供的路由，以实现更快的客户端转换。
 
 ## 三、redirect 函数
 
-redirect 功能允许您将用户重定向到另一个 URL。您可以在服务器组件、路由处理程序和服务器操作中调用 redirect 。
+redirect 功能允许您将用户重定向到另一个 URL。您可以在服务器组件、路由处理程序和服务器操作中调用 `redirect` 。
 
 ```md
-默认情况下， redirect 返回 307（临时重定向）状态代码。在服务器操作中使用时，它会返回 303（参见其他），这通常用于在 POST 请求后重定向到成功页面。
+默认情况下， redirect 返回 307（临时重定向）状态代码。在服务器操作中使用时，它会返回 303（参见其他），这通常用于在 `POST` 请求后重定向到成功页面。
 ```
 
 demo 见：[app/redirect/page.jsx](app/redirect/page.jsx)
