@@ -6,3 +6,27 @@ export const GET = async () => {
 
   return NextResponse.json(data);
 };
+
+export const POST = async (request: Request) => {
+  console.log("request", request);
+  const article = await request.json();
+
+  return NextResponse.json(
+    {
+      id: Math.random().toString(36).slice(-8),
+      data: article,
+    },
+    { status: 201 }
+  );
+};
+
+export const HEAD = async (request: Request) => {};
+
+export const PUT = async (request: Request) => {};
+
+export const PATCH = async (request: Request) => {};
+
+export const DELETE = async (request: Request) => {};
+
+// 如果 `OPTIONS` 没有定义, Next.js 会自动实现 `OPTIONS`
+export const OPTIONS = async (request: Request) => {};
