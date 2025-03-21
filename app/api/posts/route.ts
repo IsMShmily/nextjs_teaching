@@ -8,9 +8,7 @@ export const GET = async () => {
 };
 
 export const POST = async (request: Request) => {
-  console.log("request", request);
   const article = await request.json();
-
   return NextResponse.json(
     {
       id: Math.random().toString(36).slice(-8),
