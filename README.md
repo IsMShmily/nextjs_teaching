@@ -130,6 +130,7 @@ export default function Home() {
 
 ```md
 建议：使用<Link>组件进行导航，除非您对使用 `useRouter` 有特殊要求。
+注意使用该 `hook` 需要在客户端组件中。（顶层的 `'use client'` 就是声明这是客户端组件）
 ```
 
 `router.back() `：导航回浏览器历史堆栈中的上一条路由。
