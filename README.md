@@ -161,6 +161,136 @@ export const GET = async (
 };
 ```
 
-## 四、Caching 缓存
+## 四、常见问题
 
-默认情况下，路由处理程序不会缓存。但是，您可以选择缓存 `GET` 方法。其他受支持的 `HTTP` 方法不会被缓存。要缓存 `GET` 方法，请在路由处理程序文件中使用路由配置选项（例如 `export const dynamic = 'force-static'` ）。
+### 1、获取网站参数
+```tsx
+// app/api/search/route.js
+// 访问 /api/search?query=hello
+export function GET(request) {
+  const searchParams = request.nextUrl.searchParams
+  const query = searchParams.get('query') // query
+}
+```
+
+### 2、处理cookie
+```tsx
+// app/api/route.js
+import { cookies } from 'next/headers'
+ 
+export async function GET(request) {
+  const cookieStore = cookies()
+  const token = cookieStore.get('token')
+ 
+  return new Response('Hello, Next.js!', {
+    status: 200,
+    headers: { 'Set-Cookie': `token=${token}` },
+  })
+}
+```
+
+### 3、处理headers
+```tsx
+// app/api/route.js
+import { headers } from 'next/headers'
+ 
+export async function GET(request) {
+  const headersList = headers()
+  const referer = headersList.get('referer')
+ 
+  return new Response('Hello, Next.js!', {
+    status: 200,
+    headers: { referer: referer },
+  })
+}
+```
+
+### 4、如何重定向
+```tsx
+import { redirect } from 'next/navigation'
+ 
+export async function GET(request) {
+  redirect('https://nextjs.org/')
+}
+```
+
+### 5、获取请求体内容 
+```tsx
+// app/items/route.js 
+import { NextResponse } from 'next/server'
+ 
+export async function POST(request) {
+  const res = await request.json()
+  return NextResponse.json({ res })
+}
+```
+如果为FormData类型
+```tsx
+// app/items/route.js
+import { NextResponse } from 'next/server'
+ 
+export async function POST(request) {
+  const formData = await request.formData()
+  const name = formData.get('name')
+  const email = formData.get('email')
+  return NextResponse.json({ name, email })
+}
+```
+
+### 6、设置CORS
+```tsx
+// app/api/route.ts
+export async function GET(request) {
+  return new Response('Hello, Next.js!', {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
+}
+```
+
+### 7、响应无 UI 内容？
+```tsx
+// app/api/route.ts
+export async function GET(request) {
+  return new Response('Hello, Next.js!', {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
+}
+```
+
+
+### 8、Stream 流
+```tsx
+// app/api/chat/route.js
+import OpenAI from 'openai'
+import { OpenAIStream, StreamingTextResponse } from 'ai'
+ 
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+})
+ 
+export const runtime = 'edge'
+ 
+export async function POST(req) {
+  const { messages } = await req.json()
+  const response = await openai.chat.completions.create({
+    model: 'gpt-3.5-turbo',
+    stream: true,
+    messages,
+  })
+ 
+  const stream = OpenAIStream(response)
+ 
+  return new StreamingTextResponse(stream)
+}
+```
+
