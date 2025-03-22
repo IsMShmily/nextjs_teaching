@@ -18,13 +18,23 @@ export const POST = async (request: Request) => {
   );
 };
 
-export const HEAD = async (request: Request) => {};
+export const HEAD = async (request: Request) => {
+  console.log("request", request);
+};
 
-export const PUT = async (request: Request) => {};
+export const PUT = async (request: Request) => {
+  console.log("request", request);
+};
 
-export const PATCH = async (request: Request) => {};
+export const PATCH = async (request: Request) => {
+  console.log("request", request);
+};
 
-export const DELETE = async (request: Request) => {};
+export const DELETE = async (request: Request) => {
+  console.log("request", request);
+};
 
 // 如果 `OPTIONS` 没有定义, Next.js 会自动实现 `OPTIONS`
-export const OPTIONS = async (request: Request) => {};
+export const OPTIONS = async (request: Request) => {
+  console.log("request", request);
+};

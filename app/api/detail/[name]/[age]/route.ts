@@ -1,10 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
-export const GET = async ({
-  params,
-}: {
-  params: { name: string; age: string };
-}) => {
+export const GET = async (
+  _: NextRequest,
+  {
+    params,
+  }: {
+    params: Promise<{ name: string; age: string }>;
+  }
+) => {
   // request params { name: 'shmily', age: '20' }
   console.log("params", await params);
 
