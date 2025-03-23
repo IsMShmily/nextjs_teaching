@@ -18,7 +18,7 @@
 
 #### Example:
 
-将 `/about/**` 所有路由访问重定向到 `/home`
+将 `/about/**` 所有路由访问重定向到 `/home`，见：[middleware.ts](middleware.ts)
 
 ```ts
 import { NextRequest, NextResponse } from "next/server";
@@ -36,9 +36,70 @@ export const config = {
 
 `matcher` 的语法参考 [path-to-regexp](https://github.com/pillarjs/path-to-regexp)
 
-我们也可以不使用 `matcher`，而是在 `middleware` 中使用条件语句进行判断
+我们也可以不使用 `matcher`，而是在 `middleware` 中使用条件语句进行判断，见：[middleware.ts](middleware.ts)
 
-## 二、
+```ts
+import { NextRequest, NextResponse } from "next/server";
+
+export const middleware = (request: NextRequest) => {
+  // 将 url 开头为 /about 的请求重定向到 /home
+  if (request.nextUrl.pathname.startsWith("/about")) {
+    return NextResponse.redirect(new URL("/home", request.url));
+  }
+};
+```
+
+## 二、在中间件中使用 Cookies
+
+`Cookies` 是常规标头。在 `Request` 中，它们存储在 `Cookie` 标头中。在 `Response` 中，它们位于 `Set-Cookie` 标头中。`Next.js` 通过 `NextRequest` 和 `NextResponse` 上的 `cookies` 扩展提供了一种访问和操作这些 `cookie` 的便捷方法。
+
+对于传入请求， `cookies` 具有以下方法：
+
+- get
+- getAll
+- set
+- delete cookies
+
+您可以使用 `has` 检查 `cookie` 是否存在，或使用 `clear` 删除所有 `cookie。`
+
+对于传出的响应， `cookies` 具有以下方法
+
+- get
+- getAll
+- set
+- delete
+
+```tsx
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  // Assume a "Cookie:nextjs=fast" header to be present on the incoming request
+  // Getting cookies from the request using the `RequestCookies` API
+  let cookie = request.cookies.get("nextjs");
+  console.log(cookie); // => { name: 'nextjs', value: 'fast', Path: '/' }
+  const allCookies = request.cookies.getAll();
+  console.log(allCookies); // => [{ name: 'nextjs', value: 'fast' }]
+
+  request.cookies.has("nextjs"); // => true
+  request.cookies.delete("nextjs");
+  request.cookies.has("nextjs"); // => false
+
+  // Setting cookies on the response using the `ResponseCookies` API
+  const response = NextResponse.next();
+  response.cookies.set("vercel", "fast");
+  response.cookies.set({
+    name: "vercel",
+    value: "fast",
+    path: "/",
+  });
+  cookie = response.cookies.get("vercel");
+  console.log(cookie); // => { name: 'vercel', value: 'fast', Path: '/' }
+  // The outgoing response will have a `Set-Cookie:vercel=fast;path=/` header.
+
+  return response;
+}
+```
 
 ## 三、
 
