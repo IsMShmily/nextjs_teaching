@@ -69,37 +69,44 @@ export const middleware = (request: NextRequest) => {
 - set
 - delete
 
+<img src="assets/01.png" style="width:60%">
+
 ```tsx
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+/** 二、中间件中使用 cookies */
+export const middleware = (request: NextRequest) => {
+  // cookie { name: 'vercel', value: '31321' }
+  console.log(request.cookies.get("vercel"));
 
-export function middleware(request: NextRequest) {
-  // Assume a "Cookie:nextjs=fast" header to be present on the incoming request
-  // Getting cookies from the request using the `RequestCookies` API
-  let cookie = request.cookies.get("nextjs");
-  console.log(cookie); // => { name: 'nextjs', value: 'fast', Path: '/' }
-  const allCookies = request.cookies.getAll();
-  console.log(allCookies); // => [{ name: 'nextjs', value: 'fast' }]
+  /**
+   * cookies [
+   * { name: 'vercel', value: '31321' },
+   * { name: 'nextjs', value: '333' }
+   * ]
+   */
+  console.log(request.cookies.getAll());
 
-  request.cookies.has("nextjs"); // => true
-  request.cookies.delete("nextjs");
-  request.cookies.has("nextjs"); // => false
+  // true
+  console.log("1、is has vercel ：", request.cookies.has("vercel"));
 
-  // Setting cookies on the response using the `ResponseCookies` API
+  request.cookies.delete("vercel");
+
+  // false
+  console.log("2、is has vercel ：", request.cookies.has("vercel"));
+
+  /** 设置 cookie */
   const response = NextResponse.next();
-  response.cookies.set("vercel", "fast");
+  response.cookies.set("vercel", "333");
   response.cookies.set({
     name: "vercel",
-    value: "fast",
+    value: "333",
     path: "/",
   });
-  cookie = response.cookies.get("vercel");
-  console.log(cookie); // => { name: 'vercel', value: 'fast', Path: '/' }
-  // The outgoing response will have a `Set-Cookie:vercel=fast;path=/` header.
+  console.log("3、vercel：", response.cookies.get("vercel"));
 
   return response;
-}
+};
 ```
+<img src="./assets/02.png" style="width:60%">
 
 ## 三、
 

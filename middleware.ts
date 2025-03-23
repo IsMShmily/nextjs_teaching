@@ -43,8 +43,15 @@ export const middleware = (request: NextRequest) => {
   // false
   console.log("2、is has vercel ：", request.cookies.has("vercel"));
 
-
-
   /** 设置 cookie */
-  
+  const response = NextResponse.next();
+  response.cookies.set("vercel", "333");
+  response.cookies.set({
+    name: "vercel",
+    value: "333",
+    path: "/",
+  });
+  console.log("3、vercel：", response.cookies.get("vercel"));
+
+  return response;
 };
