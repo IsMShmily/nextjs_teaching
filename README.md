@@ -53,11 +53,15 @@ bun dev
 
 ### 4、`Route Handlers`的使用
 - **test_04/route_handlers**
-  - 路由方法、参数的使用与获取及其一些常见问题
+  - 约定
+  - Request Method 的使用
+  - 获取请求参数
+  - 常见问题
 ---
 
 ### 5、`Middleware` 的使用与介绍
 - **test_04/Middleware**
-  - Middleware的使用
+  - Middleware 的使用
+  - Middleware Cookies 的使用
 ---
 
