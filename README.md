@@ -140,7 +140,6 @@ pnpm run build
 
 <img src="assets/04.png" style="width:60%">
 
-
 ```tsx
 /**
  * generateStaticParams
@@ -186,3 +185,12 @@ export default Ssg3;
 ```
 
 ## 四、ISR
+
+增量静态再生 (`ISR`) 可让您：
+
+- 无需重建整个网站即可更新静态内容
+- 通过为大多数请求提供预渲染的静态页面来减少服务器负载
+- 确保自动将正确的 `cache-control` 标头添加到页面
+- 处理大量内容页面，无需较长的 `next build` 时间
+
+见：[app/isr/[id]/page.tsx](app/isr/[id]/page.tsx)
