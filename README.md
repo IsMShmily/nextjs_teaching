@@ -1,71 +1,49 @@
-## Next.js 教学
-Next.js 是基于 React 的全栈框架，专为构建高性能、SEO 友好的现代 Web 应用设计。
+## 一、CSR
 
-核心优势：
+CSR，英文全称“`Client-side Rendering`”，中文翻译“客户端渲染”。顾名思义，渲染工作主要在客户端执行。
+定义：页面内容完全由浏览器端的 `JavaScript` 动态生成。
 
-- 服务端渲染 (SSR) 和 静态站点生成 (SSG)：提升加载速度和SEO。
+#### 工作原理：
 
-- 内置路由系统：文件即路由，无需手动配置。
+- 服务器返回一个空 `HTML` 框架
+- 浏览器下载并执行 `JavaScript` 文件
+- `JavaScript` 通过 `API` 请求数据并渲染内容
 
-- API 路由：轻松创建后端接口。
+#### 特点：
 
-- TypeScript 支持、CSS Modules、图像优化等开箱即用功能。
+- 适合高度交互的 `Web` 应用
+- `SEO` 不友好
+- 首屏加载较慢
 
+#### 如何实现：
 
-## 一、运行
+- 默认行为（不使用 `getStaticProps` 或 `getServerSideProps`）
+- 使用 `useEffect` + `useState` 获取数据
 
-```bash
-# 下载依赖
-npm i 
+见：[app/csr/page.tsx](app/csr/page.tsx)
 
-# 运行项目
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```ts
+"use client";
+
+import { useEffect, useState } from "react";
+
+const CSR = () => {
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+
+  return <div>{data ? JSON.stringify(data) : "loading..."}</div>;
+};
+
+export default CSR;
 ```
 
-打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
+## 二、SSR
 
-## 二、学习目录
-### 1、`next.js `基础
-- **test_01/page_layout_template_loading**
-  - 文件系统、page、layout、template、loading组件介绍
-- **test_01/layout_template_status_demo**
-  - layout与template组件的区别 `dmeo`
----
+## 三、SSG
 
-### 2、`<Link>`与`useRouter` 介绍
-- **test_02/link_useRouter**
-  - link、useRoouter、redirect的使用
----
-
-
-### 3、`next routes` 介绍
-- **test_03/routes_detail**
-  - 动态路由、路由组、平行路由、拦截路由讲解
-- **test_03/InterceptingRoutes_demo**
-  - 拦截路由 `demo`
----
-
-### 4、`Route Handlers`的使用
-- **test_04/route_handlers**
-  - 约定
-  - Request Method 的使用
-  - 获取请求参数
-  - 常见问题
----
-
-### 5、`Middleware` 的使用与介绍
-- **test_04/Middleware**
-  - Middleware 的使用
-  - Middleware Cookies 的使用
-  - Middleware Headers 的使用
-  - Middleware CORS 的使用
-  - Middleware 如何响应
-
----
-
+## 四、ISR
