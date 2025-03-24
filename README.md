@@ -83,5 +83,6 @@ bun dev
 - **test_06/CSR_SSR_SSG_ISR**
   - CSR 的使用
   - SSR 的使用
+  - SSG 的使用
 
 ---
