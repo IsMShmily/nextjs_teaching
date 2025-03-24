@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const CSR = () => {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<unknown>(null);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")

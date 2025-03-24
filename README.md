@@ -1,6 +1,8 @@
 ## nextjs 官方文档（current branch 对应如下文档）
 
-[Server Components](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
+[Server Components 服务端组件](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
+
+[Incremental Static Regeneration 增量静态再生 ISR](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration)
 
 ## 一、CSR
 
@@ -97,5 +99,90 @@ export default SSR;
 <img src="assets/01.png" style="width:60%">
 
 ## 三、SSG
+
+`SSG`，英文全称“`Static Site Generation`”，中文翻译“静态站点生成”，在构建时（`build time`）预先生成静态 `HTML` 文件。
+
+### 工作原理：
+
+- 构建阶段生成静态 `HTML/CSS/JS`
+- 直接通过 `CDN` 快速分发
+- 数据更新需要重新构建
+
+### 特点：
+
+- 极致性能（`CDN` 缓存）
+- 高安全性（无服务端运行时）
+- 不适合频繁更新内容
+
+### 实现：
+
+- 使用 `getStaticProps`（动态数据）
+- 不需要获取数据时，默认使用 `SSG`
+
+修改 [next.config.ts](next.config.ts) 与 [app/ssr/page.tsx](app/ssr/page.tsx)
+
+```ts
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+  output: "export",
+};
+
+export default nextConfig;
+```
+
+```base
+pnpm run build
+```
+
+我们可以在 [out](out) 文件夹找到构建生成的静态资源
+
+<img src="assets/04.png" style="width:60%">
+
+
+```tsx
+/**
+ * generateStaticParams
+ * 该函数可以与动态路由段结合使用，在构建时静态生成路由，而不是在请求时按需生成。
+ *
+ * 取代了 Pages Router 中的 getStaticPaths 函数。
+ */
+export const generateStaticParams = async () => {
+  // 在构建时获取所有文章数据
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const posts = await res.json();
+
+  // 将文章数据转换为路由参数格式
+  // 返回一个包含所有可能的 id 值的数组
+  return posts.map((post: { id: { toString: () => any } }) => ({
+    id: post.id.toString(), // 确保 id 是字符串格式
+  }));
+};
+
+/**
+ * 页面组件，接收动态路由参数
+ * @param params - 包含路由参数的对象，这里是 { id: string }
+ */
+const Ssg3 = async ({ params }: { params: { id: string } }) => {
+  // 解构获取路由参数中的 id
+  const { id } = await params;
+
+  // 根据 id 获取具体的文章数据
+  const post = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`
+  ).then((res) => res.json());
+
+  // 渲染文章内容
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+    </div>
+  );
+};
+
+export default Ssg3;
+```
 
 ## 四、ISR
