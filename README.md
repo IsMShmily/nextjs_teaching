@@ -84,5 +84,6 @@ bun dev
   - CSR 的使用
   - SSR 的使用
   - SSG 的使用
+  - ISR 的使用
 
 ---
