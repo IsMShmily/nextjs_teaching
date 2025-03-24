@@ -194,3 +194,6 @@ export default Ssg3;
 - 处理大量内容页面，无需较长的 `next build` 时间
 
 见：[app/isr/[id]/page.tsx](app/isr/[id]/page.tsx)
+
+
+具体使用参考 [官方文档：incremental-static-regeneration](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration)
