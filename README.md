@@ -64,5 +64,8 @@ bun dev
   - Middleware 的使用
   - Middleware Cookies 的使用
   - Middleware Headers 的使用
+  - Middleware CORS 的使用
+  - Middleware 如何响应
+
 ---
 
