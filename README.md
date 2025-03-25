@@ -1,89 +1,140 @@
-## Next.js 教学
+## nextjs 官方文档（current branch 对应如下文档）
 
-`Next.js` 是基于 `React` 的全栈框架，专为构建高性能、`SEO` 友好的现代 `Web` 应用设计。
+- [server-components](https://nextjs.org/docs/app/building-your-application/rendering/server-components)
+- [为什么需要 React 服务器组件](https://sorrycc.com/why-react-server-components)
 
-核心优势：
+---
 
-- 服务端渲染 (`SSR`) 和 静态站点生成 (`SSG`)：提升加载速度和 `SEO`。
+## 一、React Server Components (RSC)
 
-- 内置路由系统：文件即路由，无需手动配置。
+`React Server Components` (`RSC`) 代表了 `React` 团队设计的一种新架构。这种方法旨在利用服务器和客户端环境的优势，优化效率、加载时间和交互性。
 
-- `API` 路由：轻松创建后端接口。
+架构引入了双组件模型，区分客户端组件和服务器组件。这种区分不是基于组件的功能，而是基于它们执行的位置和它们设计用于交互的特定环境。让我们更仔细地看看这两种类型：
 
-- `TypeScript` 支持、`CSS Modules`、图像优化等开箱即用功能。
+### 1、客户端组件
 
-## 一、运行
+客户端组件是我们在之前的渲染技术中使用和讨论的熟悉的 `React` 组件。它们通常在客户端（`CSR`）上渲染，但也可以在服务器上（`SSR`）渲染一次，允许用户立即看到页面的 `HTML` 内容，而不是空白屏幕。
 
-```bash
-# 下载依赖
-npm i
+“客户端组件”在服务器上渲染的概念可能看起来令人困惑，但将它们视为主要在客户端运行、但也可以（且应该）作为优化策略在服务器上执行一次的组件，这样理解会有帮助。
 
-# 运行项目
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+客户端组件可以访问客户端环境，比如浏览器，允许它们使用状态、效果和事件监听器来处理交互性，同时也可以访问像地理位置或 `localStorage` 这样的浏览器专有 `API`，让你为特定用例构建前端，就像我们在引入 `RSC` 架构之前多年所做的那样。
+
+实际上，“客户端组件”这个术语并没有表示任何新内容；它只是帮助将这些组件与新引入的服务器组件区分开来。
+
+这是一个 `Counter` 客户端组件的例子：
+
+```tsx
+"use client";
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h2>Counter</h2>
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
 ```
 
-打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
+### 2、服务器组件
 
-## 二、学习目录
+`Server Components` 是一种新型的 `React` 组件，专门设计用于仅在服务器上运行。与客户端组件不同，它们的代码保留在服务器上，永远不会下载到客户端。这种设计选择为 React 应用程序带来了多重好处。让我们更仔细地看看这些好处。
 
-### 1、`next.js `基础
+- 零捆绑大小。
 
-- **test_01/page_layout_template_loading**
-  - 文件系统、page、layout、template、loading 组件介绍
-- **test_01/layout_template_status_demo**
-  - layout 与 template 组件的区别 `dmeo`
+  - 首先，在包大小方面，服务器组件不会将代码发送到客户端，允许大型依赖项保留在服务器端。这样可以减少网络连接较慢或设备性能较差的用户下载、解析和执行这些组件的 `JavaScript` 的需要。此外，它还消除了 `hydration` 步骤，加快了应用程序的加载和交互速度。
 
----
+- 直接访问服务器端资源。
 
-### 2、`<Link>`与`useRouter` 介绍
+  - 通过直接后端访问服务器端资源，如数据库或文件系统，服务器组件能够高效地进行数据获取和渲染，无需额外的客户端处理。利用服务器的计算能力和靠近数据源的优势，它们管理计算密集型的渲染任务，并仅将交互式代码片段发送给客户端。
 
-- **test_02/link_useRouter**
-  - link、useRoouter、redirect 的使用
+- 增强的安全性。
 
----
+  - 服务器组件的独家服务器端执行通过将敏感数据和逻辑，包括令牌和 `API` 密钥，保持在客户端之外，从而增强了安全性。
 
-### 3、`next routes` 介绍
+- 改进的数据获取。
+  - 服务器组件提高了数据获取效率。通常，在使用 `useEffect` 在客户端获取数据时，子组件不能开始加载其数据，直到父组件完成加载自己的数据。这种顺序获取数据通常会导致性能不佳。通过将这些逻辑移至服务器，可以减少请求延迟，并提高整体性能，消除客户端-服务器的瀑布式交互。
+- 缓存
+  - 服务器端渲染可以缓存结果，这些结果可以在后续请求中重用，并跨不同用户共享。这种方法可以通过减少每个请求所需的渲染和数据获取量，显著提高性能并降低成本。初始页面加载和首次内容绘制（`FCP`）速度更快。 服务器组件显著提升了初始页面加载和首次内容绘制（`FCP`）。通过在服务器上生成 `HTML`，页面可以立即渲染，无需下载、解析和执行 `JavaScript` 的延迟。
+- 改善了 `SEO`
+  - 关于搜索引擎优化（`SEO`），服务器渲染的 `HTML` 对搜索引擎机器人是完全可访问的，增强了页面的可索引性。
+- 高效的流式传输
+  - 服务器组件允许将渲染过程分割成可管理的块，这些块一旦准备好就会被流式传输到客户端。这种方法允许用户更早地开始看到页面的部分内容，无需等待服务器上的整个页面完成渲染。
 
-- **test_03/routes_detail**
-  - 动态路由、路由组、平行路由、拦截路由讲解
-- **test_03/InterceptingRoutes_demo**
-  - 拦截路由 `demo`
+这是一个 `ProductList` 页面服务器组件的例子
 
----
+```tsx
+export default async function ProductList() {
+  const res = await fetch("https://api.example.com/products");
+  const products = res.json();
 
-### 4、`Route Handlers`的使用
+  return (
+    <main>
+      <h1>Products</h1>
+      {products.length > 0 ? (
+        <ul>
+          {products.map((product) => (
+            <li key={product.id}>
+              {product.name} - ${product.price}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No products found.</p>
+      )}
+    </main>
+  );
+}
+```
 
-- **test_04/route_handlers**
-  - 约定
-  - Request Method 的使用
-  - 获取请求参数
-  - 常见问题
+## 二、`use client` 指令
 
----
+在 `React Server Components` 范式中，默认情况下，`Next.js` 应用中的每个组件都被视为 `Server Component`。
 
-### 5、`Middleware` 的使用与介绍
+要定义客户端组件，我们必须在文件顶部包含一个指令 — 换句话说，一个特殊指令： "`use client`" 。这个指令作为我们从服务器端跨越到客户端的通行证，并且是允许我们定义客户端组件的关键。
 
-- **test_05/Middleware**
-  - Middleware 的使用
-  - Middleware Cookies 的使用
-  - Middleware Headers 的使用
-  - Middleware CORS 的使用
-  - Middleware 如何响应
+它向打包工具表明，这个组件以及它导入的任何组件都是为客户端执行而设计的。因此，该组件可以完全访问浏览器 API 并具有处理交互性的能力。
 
----
+## 三、`React` 服务器组件渲染生命周期
 
-### 6、`Nextjs` 中的 `CSR、SSR、SSG、ISR` 的使用与介绍
+对于 `React` 服务器组件（`RSC`），需要考虑三个要素：
 
-- **test_06/CSR_SSR_SSG_ISR**
-  - CSR 的使用
-  - SSR 的使用
-  - SSG 的使用
-  - ISR 的使用
+- 浏览器（客户端），
+- 服务器端的 Next.js（框架）
+- React（库）。
 
----
+<br/>
+初始加载序列
+
+<img src="assets/01.gif" style="width:60%">
+
+- 当您的浏览器请求一个页面时，`Next.js` 应用路由器将请求的 URL 与一个服务器组件匹配。然后 `Next.js` 指示 `React` 渲染该服务器组件。
+- `React` 渲染服务器组件以及任何同样是服务器组件的子组件，将它们转换成一种称为 `RSC` 负载的特殊 `JSON` 格式。如果任何服务器组件挂起，`React` 会暂停渲染那个子树，并发送一个占位符值。
+- 与此同时，客户端组件按照后续生命周期中的指令进行准备。
+- `Next.js` 使用 `RSC Payload` 和 `Client Component JavaScript` 指令在服务器上生成 `HTML`。这个 `HTML` 被流式传输到你的浏览器，以便立即显示路由的快速、非交互式预览。
+- `Next.js` 在 `React` 渲染每个 UI 单元时，会并行流式传输 RSC 负载。
+- 在浏览器中，`Next.js` 处理流式的 `React` 响应。`React` 使用` RSC` 负载和客户端组件指令来逐步渲染 `UI`。
+- 客户端组件和服务器组件的输出全部加载完毕后，最终的 `UI` 状态将呈现给用户。
+- 客户端组件经历水合作用，将我们的应用程序从静态显示转变为交互式体验。
+
+<br/>
+这是初始加载序列。接下来，让我们看看用于刷新应用程序部分的更新序列。
+
+<img src="assets/02.gif" style="width:60%">
+
+- 浏览器请求重新获取特定的 `UI`，例如完整路由。
+- `Next.js` 处理请求并将其与请求的服务器组件匹配。`Next.js` 指示 `React` 渲染组件树。`React` 渲染组件，类似于初始加载。
+- 但与初始序列不同，更新时不会生成 `HTML`。`Next.js` 会逐步将响应数据流式传输回客户端。
+- 在接收到流式响应后，`Next.js` 使用新的输出触发路由的重新渲染。
+- `React` 将新渲染的输出与屏幕上现有的组件进行协调（合并）。由于 `UI` 描述是一种特殊的 `JSON` 格式而不是 `HTML`，`React `可以在保留关键 `UI` 状态（如焦点或输入值）的同时更新 `DOM`。
+
+<br/>
+
+这是 `Next.js` 中带有 `App Router` 的 `RSC` 渲染生命周期的本质。
+
+在 `React` 服务器组件架构中，服务器组件负责数据获取和静态渲染，而客户端组件则负责渲染应用程序的交互元素。
+
+底线是 `RSC` 架构使得 `React` 应用能够同时利用服务器渲染和客户端渲染的最佳特性，而且是在使用单一语言、单一框架以及一套协同的 `API` `的情况下。RSC` 在传统渲染技术的基础上进行了改进，同时也克服了它们的局限性。
