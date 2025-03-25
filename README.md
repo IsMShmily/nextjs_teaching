@@ -87,3 +87,12 @@ bun dev
   - ISR 的使用
 
 ---
+
+### 7、`Nextjs` 中的 `Server Component` 与 SSR
+
+- **test 07 serverComponent SSR**
+  - `React Server Components`
+  - `Server-side Rendering`
+  - `RSC` 与 `SSR`
+
+---
