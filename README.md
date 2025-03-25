@@ -37,7 +37,7 @@ bun dev
 - **test_01/page_layout_template_loading**
   - 文件系统、page、layout、template、loading 组件介绍
 - **test_01/layout_template_status_demo**
-  - layout 与 template 组件的区别 `dmeo`
+  - layout 与 template 组件的区别 dmeo
 
 ---
 
@@ -53,7 +53,7 @@ bun dev
 - **test_03/routes_detail**
   - 动态路由、路由组、平行路由、拦截路由讲解
 - **test_03/InterceptingRoutes_demo**
-  - 拦截路由 `demo`
+  - 拦截路由 demo
 
 ---
 
@@ -91,8 +91,14 @@ bun dev
 ### 7、`Nextjs` 中的 `Server Component` 与 SSR
 
 - **test 07 serverComponent SSR**
-  - `React Server Components`
-  - `Server-side Rendering`
-  - `RSC` 与 `SSR`
+  - React Server Components (RSC)
+  - use client 指令
+  - React 服务器组件渲染生命周期
+
+---
+
+### 8、`Suspense` 与 `Streaming`
+
+- **test_08/suspense_streaming**
 
 ---
