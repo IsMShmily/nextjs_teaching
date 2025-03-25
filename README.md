@@ -99,7 +99,7 @@ bun dev
 
 ### 8、`Streaming` 流式传输
 
-- **test_08/suspense_streaming**
+- **[test_08/suspense_streaming](https://github.com/IsMShmily/nextjs_teaching/tree/test_08/suspense_streaming?tab=readme-ov-file)**
   - 传统 SSR
   - 如何实现 Streaming 流式传输
     - 使用 Suspense 标签
