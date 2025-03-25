@@ -25,7 +25,7 @@
 
 然而，它仍然很慢，因为在向用户显示页面之前需要完成服务器上的所有数据提取。
 
-## 二、实现 stream 流式传输
+## 二、实现 Streaming 流式传输
 
 ### 1、通过 Suspense 标签实现
 
@@ -89,3 +89,54 @@ export default function Home() {
 `Next.js` 将等待 `generateMetadata` 中的数据提取完成后再将 UI 流式传输到客户端。这可确保流式传输响应的第一部分包含 `<head>` 标签，所以不会对 `SEO` 造成影响
 
 ### 2、通过 loading 页面组件 实现
+
+见：[app/website](app/website) 目录下
+
+其中，[app/website/@about/page.tsx](app/website/@about/page.tsx)和[app/website/@contact/page.tsx](app/website/@contact/page.tsx) 文件内容如下
+
+```tsx
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const About = async () => {
+  await sleep(2000);
+  return <div>About</div>;
+};
+
+export default About;
+```
+
+```tsx
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const Contact = async () => {
+  await sleep(5000);
+  return <div>Contact</div>;
+};
+
+export default Contact;
+```
+
+[app/website/layout.tsx](app/website/layout.tsx) 文件内容如下，渲染`@about` 与`@contact `两个平行路由
+
+```tsx
+const Layout = ({
+  children,
+  about,
+  contact,
+}: {
+  children: React.ReactNode;
+  about: React.ReactNode;
+  contact: React.ReactNode;
+}) => {
+  return (
+    <div>
+      <div>{about}</div>
+      <div>{contact}</div>
+      <div>{children}</div>
+    </div>
+  );
+};
+
+export default Layout;
+```
+效果见：
+
+<img src="assets/06.gif" style="width:70%">
