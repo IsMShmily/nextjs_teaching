@@ -97,8 +97,12 @@ bun dev
 
 ---
 
-### 8、`Suspense` 与 `Streaming`
+### 8、`Streaming` 流式传输
 
 - **test_08/suspense_streaming**
+  - 传统 SSR
+  - 如何实现 Streaming 流式传输
+    - 使用 Suspense 标签
+    - 使用 loading 页面组件
 
 ---
