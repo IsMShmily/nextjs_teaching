@@ -90,7 +90,7 @@ bun dev
 
 ### 7、`Nextjs` 中的 `Server Component` 与 SSR
 
-- **test 07 serverComponent SSR**
+- **[test_07/serverComponent_SSR](https://github.com/IsMShmily/nextjs_teaching/tree/test_07/serverComponent_SSR?tab=readme-ov-file)**
   - React Server Components (RSC)
   - use client 指令
   - React 服务器组件渲染生命周期
