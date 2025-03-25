@@ -34,9 +34,9 @@ bun dev
 
 ### 1、`next.js `基础
 
-- **test_01/page_layout_template_loading**
+- **[test_01/page_layout_template_loading](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/page_layout_template_loading)**
   - 文件系统、page、layout、template、loading 组件介绍
-- **test_01/layout_template_status_demo**
+- **[test_01/layout_template_status_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/layout_template_status_demo)**
   - layout 与 template 组件的区别 dmeo
 
 ---
