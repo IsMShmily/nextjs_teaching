@@ -80,7 +80,7 @@ bun dev
 
 ### 6、`Nextjs` 中的 `CSR、SSR、SSG、ISR` 的使用与介绍
 
-- **test_06/CSR_SSR_SSG_ISR**
+- **[test_06/CSR_SSR_SSG_ISR](https://github.com/IsMShmily/nextjs_teaching/tree/test_06/CSR_SSR_SSG_ISR?tab=readme-ov-file)**
   - CSR 的使用
   - SSR 的使用
   - SSG 的使用
