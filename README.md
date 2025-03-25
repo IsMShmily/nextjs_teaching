@@ -43,23 +43,23 @@ bun dev
 
 ### 2、`<Link>`与`useRouter` 介绍
 
-- **test_02/link_useRouter**
+- **[test_02/link_useRouter](https://github.com/IsMShmily/nextjs_teaching/tree/test_02/link_useRouter?tab=readme-ov-file)**
   - link、useRoouter、redirect 的使用
 
 ---
 
 ### 3、`next routes` 介绍
 
-- **test_03/routes_detail**
+- **[test_03/routes_detail](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/routes_detail?tab=readme-ov-file)**
   - 动态路由、路由组、平行路由、拦截路由讲解
-- **test_03/InterceptingRoutes_demo**
+- **[test_03/InterceptingRoutes_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/InterceptingRoutes_demo?tab=readme-ov-file)**
   - 拦截路由 demo
 
 ---
 
 ### 4、`Route Handlers`的使用
 
-- **test_04/route_handlers**
+- **[test_04/route_handlers](https://github.com/IsMShmily/nextjs_teaching/tree/test_04/route_handlers?tab=readme-ov-file)**
   - 约定
   - Request Method 的使用
   - 获取请求参数
@@ -69,7 +69,7 @@ bun dev
 
 ### 5、`Middleware` 的使用与介绍
 
-- **test_05/Middleware**
+- **[test_05/Middleware](https://github.com/IsMShmily/nextjs_teaching/tree/test_05/Middleware?tab=readme-ov-file)**
   - Middleware 的使用
   - Middleware Cookies 的使用
   - Middleware Headers 的使用
