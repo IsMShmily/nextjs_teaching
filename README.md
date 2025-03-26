@@ -111,6 +111,11 @@ bun dev
 
 - **[test_09/clientCompoent](https://github.com/IsMShmily/nextjs_teaching/tree/test_09/clientComponent)**
   - 客户端组件
+    - 使用 Client Components
+    - Client Components 如何呈现
+  - 如何使用 Client Component
+    - 基本使用
+    - 最佳实践
   - 服务端组件 VS 客户端组件
 
 ---
