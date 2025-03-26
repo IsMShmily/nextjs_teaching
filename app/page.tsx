@@ -1,12 +1,7 @@
-"use client";
-import { useState } from "react";
-
 export default function Home() {
-  const [count, setCount] = useState(0);
   return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+    <div className="border-2 border-yellow-500 w-100 h-100">
+      hello next.js Home Page
     </div>
   );
 }
