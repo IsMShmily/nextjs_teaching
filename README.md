@@ -1,116 +1,17 @@
-## Next.js 教学
+## nextjs 官方文档（current branch 对应如下文档）
 
-`Next.js` 是基于 `React` 的全栈框架，专为构建高性能、`SEO` 友好的现代 `Web` 应用设计。
-
-核心优势：
-
-- 服务端渲染 (`SSR`) 和 静态站点生成 (`SSG`)：提升加载速度和 `SEO`。
-
-- 内置路由系统：文件即路由，无需手动配置。
-
-- `API` 路由：轻松创建后端接口。
-
-- `TypeScript` 支持、`CSS Modules`、图像优化等开箱即用功能。
-
-## 一、运行
-
-```bash
-# 下载依赖
-npm i
-
-# 运行项目
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
-
-## 二、学习目录
-
-### 1、`next.js `基础
-
-- **[test_01/page_layout_template_loading](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/page_layout_template_loading)**
-  - 文件系统、page、layout、template、loading 组件介绍
-- **[test_01/layout_template_status_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/layout_template_status_demo)**
-  - layout 与 template 组件的区别 dmeo
+- [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components)
+- [server-components](https://nextjs.org/docs/app/building-your-application/rendering/server-components)
 
 ---
 
-### 2、`<Link>`与`useRouter` 介绍
+## 一、Client Components 客户端组件
 
-- **[test_02/link_useRouter](https://github.com/IsMShmily/nextjs_teaching/tree/test_02/link_useRouter?tab=readme-ov-file)**
-  - link、useRoouter、redirect 的使用
+客户端组件允许您编写在服务器上预渲染的交互式 `UI` 并且可以使用客户端 `JavaScript` 在浏览器中运行。
 
----
+本页将介绍客户端组件的工作原理、如何呈现以及何时使用它们。
 
-### 3、`next routes` 介绍
+在客户端进行渲染工作有几个好处，包括：
 
-- **[test_03/routes_detail](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/routes_detail?tab=readme-ov-file)**
-  - 动态路由、路由组、平行路由、拦截路由讲解
-- **[test_03/InterceptingRoutes_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/InterceptingRoutes_demo?tab=readme-ov-file)**
-  - 拦截路由 demo
-
----
-
-### 4、`Route Handlers`的使用
-
-- **[test_04/route_handlers](https://github.com/IsMShmily/nextjs_teaching/tree/test_04/route_handlers?tab=readme-ov-file)**
-  - 约定
-  - Request Method 的使用
-  - 获取请求参数
-  - 常见问题
-
----
-
-### 5、`Middleware` 的使用与介绍
-
-- **[test_05/Middleware](https://github.com/IsMShmily/nextjs_teaching/tree/test_05/Middleware?tab=readme-ov-file)**
-  - Middleware 的使用
-  - Middleware Cookies 的使用
-  - Middleware Headers 的使用
-  - Middleware CORS 的使用
-  - Middleware 如何响应
-
----
-
-### 6、`Nextjs` 中的 `CSR、SSR、SSG、ISR` 的使用与介绍
-
-- **[test_06/CSR_SSR_SSG_ISR](https://github.com/IsMShmily/nextjs_teaching/tree/test_06/CSR_SSR_SSG_ISR?tab=readme-ov-file)**
-  - CSR 的使用
-  - SSR 的使用
-  - SSG 的使用
-  - ISR 的使用
-
----
-
-### 7、`Nextjs` 中的 `Server Component` 与 SSR
-
-- **[test_07/serverComponent_SSR](https://github.com/IsMShmily/nextjs_teaching/tree/test_07/serverComponent_SSR?tab=readme-ov-file)**
-  - React Server Components (RSC)
-  - use client 指令
-  - React 服务器组件渲染生命周期
-
----
-
-### 8、`Streaming` 流式传输
-
-- **[test_08/suspense_streaming](https://github.com/IsMShmily/nextjs_teaching/tree/test_08/suspense_streaming?tab=readme-ov-file)**
-  - 传统 SSR
-  - 如何实现 Streaming 流式传输
-    - 使用 Suspense 标签
-    - 使用 loading 页面组件
-
----
-
-### 9、`Nextjs`中的 服务端组件 与 客户端组件
-
-- **[test_09/clientCompoent](https://github.com/IsMShmily/nextjs_teaching/tree/test_09/serverComponentAdnClientCompoent)**
-  - 客户端组件
-  - 服务端组件 VS 客户端组件
-
----
+- 交互性 ：客户端组件可以使用状态、效果和事件监听器，这意味着它们可以向用户提供即时反馈并更新 `UI`。
+- 浏览器 API ：客户端组件可以访问浏览器 `API`，例如地理位置或 `localStorage` 。
