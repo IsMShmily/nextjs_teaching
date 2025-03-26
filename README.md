@@ -106,3 +106,12 @@ bun dev
     - 使用 loading 页面组件
 
 ---
+
+### 9、`Nextjs`中的 服务端组件 与 客户端组件
+
+- **[test_09/serverComponentAdnClientCompoent](https://github.com/IsMShmily/nextjs_teaching/tree/test_09/serverComponentAdnClientCompoent)**
+  - 服务端组件
+  - 客户端组件
+  - 服务端组件 VS 客户端组件
+
+---
