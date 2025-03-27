@@ -125,6 +125,6 @@ bun dev
 - **[text_10/server_renderer_tactics](https://github.com/IsMShmily/nextjs_teaching/tree/text_10/server_renderer_tactics)**
   - 静态渲染
   - 动态渲染
-  - 其他策略
+  - 局部渲染
 
 ---
