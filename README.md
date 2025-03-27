@@ -119,3 +119,12 @@ bun dev
   - 服务端组件 VS 客户端组件
 
 ---
+
+### 10、`Nextjs` 中的 服务端渲染策略
+
+- **[text_10/server_renderer_tactics](https://github.com/IsMShmily/nextjs_teaching/tree/text_10/server_renderer_tactics)**
+  - 静态渲染
+  - 动态渲染
+  - 其他策略
+
+---
