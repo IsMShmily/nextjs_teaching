@@ -1,130 +1,208 @@
-## Next.js 教学
+## nextjs 官方文档（current branch 对应如下文档）
 
-`Next.js` 是基于 `React` 的全栈框架，专为构建高性能、`SEO` 友好的现代 `Web` 应用设计。
+[server-actions-and-mutations](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)
 
-核心优势：
+---
 
-- 服务端渲染 (`SSR`) 和 静态站点生成 (`SSG`)：提升加载速度和 `SEO`。
+## 一、什么是 Server Actions
 
-- 内置路由系统：文件即路由，无需手动配置。
+`Server Actions` 是指在服务端执行的异步函数，它们可以在服务端和客户端组件中使用，以处理 Next.js 应用中的数据提交和更改
 
-- `API` 路由：轻松创建后端接口。
+我们可以使用 "`use server`" 来定义服务器操作指令。您可以将指令放在 `async` 函数的顶部，以将该函数标记为服务器操作，或者放在单独文件的顶部，以将该文件的所有导出标记为服务器操作。
 
-- `TypeScript` 支持、`CSS Modules`、图像优化等开箱即用功能。
+- 将 "`use server`" 放到一个 `async` 函数的顶部表示该函数为 `Server Action`（函数级别）
+- 将 "`use server`" 放到一个单独文件的顶部表示该文件导出的所有函数都是 `Server Actions`（模块级别）
 
-## 一、运行
+当在服务端组件中使用的时候，两种级别都可以使用：
 
-```bash
-# 下载依赖
-npm i
+```ts
+export default function Page() {
+  // Server Action
+  async function create() {
+    "use server";
+    // Mutate data
+  }
 
-# 运行项目
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  return "...";
+}
 ```
 
-打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
+要在客户端组件中调用服务器操作，请创建一个新文件并在其顶部添加 "`use server`" 指令。文件内的所有导出函数都将被标记为可在客户端和服务器组件中重复使用的服务器操作：
 
-## 二、学习目录
+见： [app/action.ts](app/action.ts)
 
-### 1、`next.js `基础
+```ts
+"use server";
 
-- **[test_01/page_layout_template_loading](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/page_layout_template_loading)**
-  - 文件系统、page、layout、template、loading 组件介绍
-- **[test_01/layout_template_status_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/layout_template_status_demo)**
-  - layout 与 template 组件的区别 dmeo
+export async function create() {}
+```
 
----
+见： [app/button.tsx](app/button.tsx)
 
-### 2、`<Link>`与`useRouter` 介绍
+```ts
+"use client";
 
-- **[test_02/link_useRouter](https://github.com/IsMShmily/nextjs_teaching/tree/test_02/link_useRouter?tab=readme-ov-file)**
-  - link、useRoouter、redirect 的使用
+import { create } from "./actions";
 
----
+export function Button() {
+  return <button onClick={() => create()}>Create</button>;
+}
+```
 
-### 3、`next routes` 介绍
+您还可以将服务器操作作为 `prop` 传递给客户端组件：
 
-- **[test_03/routes_detail](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/routes_detail?tab=readme-ov-file)**
-  - 动态路由、路由组、平行路由、拦截路由讲解
-- **[test_03/InterceptingRoutes_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/InterceptingRoutes_demo?tab=readme-ov-file)**
-  - 拦截路由 demo
+```ts
+<ClientComponent updateItemAction={updateItem} />
+```
 
----
+```ts
+"use client";
 
-### 4、`Route Handlers`的使用
+export default function ClientComponent({
+  updateItemAction,
+}: {
+  updateItemAction: (formData: FormData) => void;
+}) {
+  return <form action={updateItemAction}>{/* ... */}</form>;
+}
+```
 
-- **[test_04/route_handlers](https://github.com/IsMShmily/nextjs_teaching/tree/test_04/route_handlers?tab=readme-ov-file)**
-  - 约定
-  - Request Method 的使用
-  - 获取请求参数
-  - 常见问题
+## 二、如何使用
 
----
+在 `Pages Router` 下，如果要进行前后端交互，需要先定义一个接口，然后前端调用接口完整前后端交互。而在 `App Router` 下，这种操作都可以简化为 `Server Actions`。
 
-### 5、`Middleware` 的使用与介绍
+而在具体使用上，虽然 `Server Actions` 常与 `<form>` 一起使用，但其实还可以在事件处理程序、`useEffect`、三方库、其他表单元素（如 `<button>`）中调用。
 
-- **[test_05/Middleware](https://github.com/IsMShmily/nextjs_teaching/tree/test_05/Middleware?tab=readme-ov-file)**
-  - Middleware 的使用
-  - Middleware Cookies 的使用
-  - Middleware Headers 的使用
-  - Middleware CORS 的使用
-  - Middleware 如何响应
+我们写一个 `TODO` 看下 `Server Actions` 是如何实现的？
 
----
+<img src="assets/01.png" style="width:70%">
 
-### 6、`Nextjs` 中的 `CSR、SSR、SSG、ISR` 的使用与介绍
+[app/form/page.tsx](app/form/page.tsx)
 
-- **[test_06/CSR_SSR_SSG_ISR](https://github.com/IsMShmily/nextjs_teaching/tree/test_06/CSR_SSR_SSG_ISR?tab=readme-ov-file)**
-  - CSR 的使用
-  - SSR 的使用
-  - SSG 的使用
-  - ISR 的使用
+```ts
+import { fetch_getTodos, fetch_createTodo } from "./action";
 
----
+const FormPage = async () => {
+  const todos = await fetch_getTodos();
 
-### 7、`Nextjs` 中的 `Server Component` 与 SSR
+  return (
+    <>
+      <form action={fetch_createTodo}>
+        <input
+          type="text"
+          name="todo"
+          className="border-2 border-gray-300 rounded-md p-2"
+        />
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
+          Submit
+        </button>
+      </form>
+      <ul>
+        {todos.map((todo, i) => (
+          <li key={i}>{todo.title}</li>
+        ))}
+      </ul>
+    </>
+  );
+};
 
-- **[test_07/serverComponent_SSR](https://github.com/IsMShmily/nextjs_teaching/tree/test_07/serverComponent_SSR?tab=readme-ov-file)**
-  - React Server Components (RSC)
-  - use client 指令
-  - React 服务器组件渲染生命周期
+export default FormPage;
+```
 
----
+[app/form/action.ts](app/form/action.ts)
 
-### 8、`Streaming` 流式传输
+```ts
+"use server";
 
-- **[test_08/suspense_streaming](https://github.com/IsMShmily/nextjs_teaching/tree/test_08/suspense_streaming?tab=readme-ov-file)**
-  - 传统 SSR
-  - 如何实现 Streaming 流式传输
-    - 使用 Suspense 标签
-    - 使用 loading 页面组件
+import { revalidatePath } from "next/cache";
 
----
+const todos = [
+  { id: 1, title: "Todo 1" },
+  { id: 2, title: "Todo 2" },
+  { id: 3, title: "Todo 3" },
+];
 
-### 9、`Nextjs`中的 服务端组件 与 客户端组件
+export const fetch_getTodos = async () => {
+  return todos;
+};
 
-- **[test_09/clientCompoent](https://github.com/IsMShmily/nextjs_teaching/tree/test_09/clientComponent)**
-  - 客户端组件
-    - 使用 Client Components
-    - Client Components 如何呈现
-  - 如何使用 Client Component
-    - 基本使用
-    - 最佳实践
-  - 服务端组件 VS 客户端组件
+export const fetch_createTodo = async (formData: FormData) => {
+  const newTodo = {
+    id: todos.length + 1,
+    title: formData.get("todo") as string,
+  };
 
----
+  todos.push(newTodo!);
+  revalidatePath("/form");
+  return newTodo;
+};
+```
 
-### 10、`Nextjs` 中的 服务端渲染策略
+`Next.js` 会自动插入一个` <input type="hidden">`，其值为 `$ACTION_ID_xxxxxxxx`，用于让服务端区分 `Action`（因为一个页面可能使用多个 `Server Actions`）。
 
-- **[text_10/server_renderer_tactics](https://github.com/IsMShmily/nextjs_teaching/tree/text_10/server_renderer_tactics)**
-  - 静态渲染
-  - 动态渲染
-  - 局部渲染
+<img src="assets/02.png" style="width:70%">
 
----
+当点击 `Submit` 的时候，触发表单提交，会发送一个 `POST` 请求到当前页面地址：
+
+<img src="assets/03.png" style="width:70%">
+
+请求会携带表单中的值，以及` $ACTION_ID`：
+
+<img src="assets/04.png" style="width:70%">
+
+接口返回 `RSC Payload`，用于渲染更新后的数据：
+
+<img src="assets/05.png" style="width:70%">
+
+总结：
+
+- Server Actions 背后使用的是 POST 请求方法，请求当前页面地址，根据 $ACTION_ID 区分
+- Server Actions 与 Next.js 的缓存和重新验证架构集成。调用 Action 时，Next.js 可以一次性返回更新的 UI 和新数据
+
+<br />
+
+通过 事件 使用 `Server Actions`，新增：[app/form/components/button.tsx](app/form/components/button.tsx)
+
+```ts
+"use client";
+
+import { fetch_createTodoBtn } from "../action";
+const Button = () => {
+  const insetTodoHandler = async () => {
+    const formData = new FormData();
+    formData.append("todo", "666");
+    await fetch_createTodoBtn(formData);
+  };
+  return (
+    <div>
+      <button
+        className="bg-blue-500 text-white p-2 rounded-md"
+        onClick={insetTodoHandler}
+      >
+        Create
+      </button>
+    </div>
+  );
+};
+
+export default Button;
+```
+
+修改：[app/form/action.ts](app/form/action.ts)
+
+```ts
+// ...
+// ...
+
+// 增加 fetch_createTodoBtn 方法
+export const fetch_createTodoBtn = async (formData: FormData) => {
+  const newTodo = {
+    id: todos.length + 1,
+    title: formData.get("todo") as string,
+  };
+
+  todos.push(newTodo!);
+  revalidatePath("/form");
+  return newTodo;
+};
+```
