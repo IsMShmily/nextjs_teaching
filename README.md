@@ -1,121 +1,60 @@
-## Next.js 教学
+## nextjs 官方文档（current branch 对应如下文档）
 
-`Next.js` 是基于 `React` 的全栈框架，专为构建高性能、`SEO` 友好的现代 `Web` 应用设计。
+[static-rendering-default](https://nextjs.org/docs/app/building-your-application/rendering/server-components#static-rendering-default)
 
-核心优势：
+[dynamic-rendering](https://nextjs.org/docs/app/building-your-application/rendering/server-components#dynamic-rendering)
 
-- 服务端渲染 (`SSR`) 和 静态站点生成 (`SSG`)：提升加载速度和 `SEO`。
+[partial-prerendering](https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering)
 
-- 内置路由系统：文件即路由，无需手动配置。
+[partial-rendering](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering)
 
-- `API` 路由：轻松创建后端接口。
+---
 
-- `TypeScript` 支持、`CSS Modules`、图像优化等开箱即用功能。
+## 引言：
 
-## 一、运行
+新建：[app/server/page.tsx](app/server/page.tsx) 如下
 
-```bash
-# 下载依赖
-npm i
+```ts
+const ServerPage = async () => {
+  // 获取一张随机图片
+  const randomImage = await fetch("https://api.thecatapi.com/v1/images/search");
+  const imageData = await randomImage.json();
+  const imageUrl = imageData[0].url;
 
-# 运行项目
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  return (
+    <div>
+      <img src={imageUrl} className="w-100" alt="random cat" />
+    </div>
+  );
+};
+
+export default ServerPage;
 ```
 
-打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
+当我们刷新页面的时候，每次都会调用 `img search` 的接口 获取一张猫猫图片：`pnpm run dev `打开 http://localhost:3000/server 我们可以看到
 
-## 二、学习目录
+<img src="assets/01.gif" style="width:70%">
 
-### 1、`next.js `基础
+修改 [package.json](package.json) `build` 命令为 `"build": "next build && next start",` 打包运行 http://localhost:3000/server 页面，我们发现 刷新页面，猫猫图片也不会更新了
 
-- **[test_01/page_layout_template_loading](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/page_layout_template_loading)**
-  - 文件系统、page、layout、template、loading 组件介绍
-- **[test_01/layout_template_status_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/layout_template_status_demo)**
-  - layout 与 template 组件的区别 dmeo
+<img src="assets/02.gif" style="width:70%">
 
----
+让我们查看 `build` 输出的结果：
 
-### 2、`<Link>`与`useRouter` 介绍
+<img src="assets/01.png" style="width:70%">
 
-- **[test_02/link_useRouter](https://github.com/IsMShmily/nextjs_teaching/tree/test_02/link_useRouter?tab=readme-ov-file)**
-  - link、useRoouter、redirect 的使用
+`/server` 被标记为 `Static`，表示被预渲染为静态内容。也就是说，`/server` 的返回内容其实在构建的时候就已经决定了。页面返回的图片正是构建时调用猫猫接口返回的那张图片。
 
----
+那么如何让 `/server` 每次都返回新的图片呢？这就要说到 `Next.js` 的服务端渲染策略了。
 
-### 3、`next routes` 介绍
+## 一、静态渲染
 
-- **[test_03/routes_detail](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/routes_detail?tab=readme-ov-file)**
-  - 动态路由、路由组、平行路由、拦截路由讲解
-- **[test_03/InterceptingRoutes_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/InterceptingRoutes_demo?tab=readme-ov-file)**
-  - 拦截路由 demo
+## 二、动态渲染
 
----
+## 三、其他策略
 
-### 4、`Route Handlers`的使用
+### 1、局部渲染
 
-- **[test_04/route_handlers](https://github.com/IsMShmily/nextjs_teaching/tree/test_04/route_handlers?tab=readme-ov-file)**
-  - 约定
-  - Request Method 的使用
-  - 获取请求参数
-  - 常见问题
+### 2、动态路由
 
----
-
-### 5、`Middleware` 的使用与介绍
-
-- **[test_05/Middleware](https://github.com/IsMShmily/nextjs_teaching/tree/test_05/Middleware?tab=readme-ov-file)**
-  - Middleware 的使用
-  - Middleware Cookies 的使用
-  - Middleware Headers 的使用
-  - Middleware CORS 的使用
-  - Middleware 如何响应
-
----
-
-### 6、`Nextjs` 中的 `CSR、SSR、SSG、ISR` 的使用与介绍
-
-- **[test_06/CSR_SSR_SSG_ISR](https://github.com/IsMShmily/nextjs_teaching/tree/test_06/CSR_SSR_SSG_ISR?tab=readme-ov-file)**
-  - CSR 的使用
-  - SSR 的使用
-  - SSG 的使用
-  - ISR 的使用
-
----
-
-### 7、`Nextjs` 中的 `Server Component` 与 SSR
-
-- **[test_07/serverComponent_SSR](https://github.com/IsMShmily/nextjs_teaching/tree/test_07/serverComponent_SSR?tab=readme-ov-file)**
-  - React Server Components (RSC)
-  - use client 指令
-  - React 服务器组件渲染生命周期
-
----
-
-### 8、`Streaming` 流式传输
-
-- **[test_08/suspense_streaming](https://github.com/IsMShmily/nextjs_teaching/tree/test_08/suspense_streaming?tab=readme-ov-file)**
-  - 传统 SSR
-  - 如何实现 Streaming 流式传输
-    - 使用 Suspense 标签
-    - 使用 loading 页面组件
-
----
-
-### 9、`Nextjs`中的 服务端组件 与 客户端组件
-
-- **[test_09/clientCompoent](https://github.com/IsMShmily/nextjs_teaching/tree/test_09/clientComponent)**
-  - 客户端组件
-    - 使用 Client Components
-    - Client Components 如何呈现
-  - 如何使用 Client Component
-    - 基本使用
-    - 最佳实践
-  - 服务端组件 VS 客户端组件
-
----
+### 3、动态段
