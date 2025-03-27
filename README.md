@@ -128,3 +128,11 @@ bun dev
   - 局部渲染
 
 ---
+
+### 11、`Nextjs` Server Actions 使用 (上)
+
+- **[test_11/server_actions](https://github.com/IsMShmily/nextjs_teaching/tree/test_11/server_actions)**
+  - 基本用法
+  - 使用 Server Actions 实现 TODOList
+
+---
