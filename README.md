@@ -129,7 +129,7 @@ bun dev
 
 ---
 
-### 11、`Nextjs` Server Actions 使用 (上)
+### 11、`Nextjs` Server Actions 使用
 
 - **[test_11/server_actions](https://github.com/IsMShmily/nextjs_teaching/tree/test_11/server_actions)**
   - 基本用法
@@ -137,9 +137,9 @@ bun dev
 
 ---
 
-### 12、`Nextjs` Server Actions 使用 (下)
+### 12、`Nextjs` 中的 Caching
 
-- **[test_12/server_actions_01](https://github.com/IsMShmily/nextjs_teaching/tree/test_11/server_actions)**
+- **[test_12/caching](https://github.com/IsMShmily/nextjs_teaching/tree/test_12/caching)**
 
 ---
 
