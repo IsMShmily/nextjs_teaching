@@ -140,6 +140,9 @@ bun dev
 ### 12、`Nextjs` 中的 Caching
 
 - **[test_12/caching](https://github.com/IsMShmily/nextjs_teaching/tree/test_12/caching)**
+  - 概述
+  - 请求记忆
+  - 数据缓存
 
 ---
 
