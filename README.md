@@ -142,3 +142,14 @@ bun dev
 - **[test_12/server_actions_01](https://github.com/IsMShmily/nextjs_teaching/tree/test_11/server_actions)**
 
 ---
+
+### 13、`Nextjs` 中的环境变量和路径别名
+
+- **[test_13/env_src_alias](https://github.com/IsMShmily/nextjs_teaching/tree/test_13/env_src_alias)**
+  - 环境变量的使用
+    - 服务器组件中使用
+    - 路由处理程序中使用
+    - 浏览器中使用
+  - 路径别名的使用
+
+---
