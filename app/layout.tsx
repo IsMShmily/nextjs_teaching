@@ -1,35 +1,19 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./style.css";
+import Sidebar from "./components/Sidebar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Next.js",
-  description: " Next.js",
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="border-2 border-dashed border-white-500 p-2">
-          Main Layout
-          {children}
+      <body>
+        <div className="container">
+          <div className="main">
+            <Sidebar />
+            <section className="col note-viewer">{children}</section>
+          </div>
         </div>
       </body>
     </html>
