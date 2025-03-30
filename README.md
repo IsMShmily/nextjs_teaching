@@ -156,3 +156,11 @@ bun dev
   - 路径别名的使用
 
 ---
+
+### 14、实战：React Notes 项目初始化
+
+- **[notes_01](https://github.com/IsMShmily/nextjs_teaching/tree/notes_01)**
+  - React Notes 项目接口搭建
+  - redis 的基本使用
+
+---
