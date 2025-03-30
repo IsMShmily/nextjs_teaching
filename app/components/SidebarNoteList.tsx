@@ -1,3 +1,4 @@
+// 'use client'
 
 import dayjs from "dayjs";
 export default async function NoteList({ notes }: { notes: any }) {
