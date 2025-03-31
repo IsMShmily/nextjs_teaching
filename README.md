@@ -157,10 +157,19 @@ bun dev
 
 ---
 
-### 14、实战：React Notes 项目初始化
+### 14、实战：`React Notes` 项目初始化
 
 - **[notes_01](https://github.com/IsMShmily/nextjs_teaching/tree/notes_01)**
   - React Notes 项目结构搭建
   - redis 的基本使用
+
+---
+
+### `15、SidebarNoteList`优化和`Suspense`的使用
+
+- **[notes_02](https://github.com/IsMShmily/nextjs_teaching/tree/notes_02)**
+  - SidebarNoteList 侧边栏优化
+  - 客户端组件下移
+  - Suspense 的使用
 
 ---
