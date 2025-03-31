@@ -311,4 +311,4 @@ export default async function NoteList({ notes }: { notes: any }) {
 
 <img src="assets/09.png" style="width:70%">
 
-这就是使用 `React Server Compoent` 的好处之一，服务端组件的代码不会打包到客户端的 `bundle` 中：
+这就是使用 `React Server Compoent` 的好处之一，服务端组件的代码不会打包到客户端的 `bundle` 中
