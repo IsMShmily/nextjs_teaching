@@ -169,7 +169,6 @@ bun dev
 
 - **[notes_02](https://github.com/IsMShmily/nextjs_teaching/tree/notes_02)**
   - SidebarNoteList 侧边栏优化
-  - 客户端组件下移
-  - Suspense 的使用
+  - 使用 Suspense 实现骨架图的效果
 
 ---
