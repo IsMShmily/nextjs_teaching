@@ -1,8 +1,12 @@
 import SidebarNoteItem from "../components/SidebarNoteItem";
+import { getAllNotes } from "@/lib/redis";
 
-export default async function NoteList({ notes }: { notes: any }) {
+export default async function NoteList() {
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+  await sleep(10000);
+  const notes = await getAllNotes();
+
   const arr = Object.entries(notes);
-
   if (arr.length == 0) {
     return <div className="notes-empty">{"No notes created yet!"}</div>;
   }
