@@ -165,7 +165,7 @@ bun dev
 
 ---
 
-### `15、SidebarNoteList`优化和`Suspense`的使用
+### 15、`SidebarNoteList`优化和`Suspense`的使用
 
 - **[notes_02](https://github.com/IsMShmily/nextjs_teaching/tree/notes_02)**
   - SidebarNoteList 侧边栏优化
