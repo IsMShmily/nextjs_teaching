@@ -25,7 +25,7 @@ DB_PASS=mypassword
 
 ### 1、服务端组件中使用
 
-服务端组件中使用，见：[app/page.tsx](app/page.tsx)
+服务端组件中使用，见：[app/page.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/test_13/env_src_alias/app/page.tsx)
 
 ```ts
 export default function Home() {
@@ -42,7 +42,7 @@ export default function Home() {
 
 ### 2、路由处理程序中使用
 
-路由处理程序中使用，见：[app/api/route.ts](app/api/route.ts)
+路由处理程序中使用，见：[app/api/route.ts](https://github.com/IsMShmily/nextjs_teaching/blob/test_13/env_src_alias/app/api/route.ts)
 
 ```ts
 export async function GET() {
@@ -64,7 +64,7 @@ NEXT_PUBLIC_SIGN=1a2b3c
 ```
 
 如果没有 `NEXT_PUBLIC` 前缀，正常点击的时候获取的值会是 undefined ，添加 `NEXT_PUBLIC` 前缀后即可获取到正确的值。
-见：[app/components/button/page.tsx](app/components/button/page.tsx)
+见：[app/components/button/page.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/test_13/env_src_alias/app/components/button/page.tsx)
 
 ```tsx
 "use client";
