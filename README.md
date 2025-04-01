@@ -17,7 +17,7 @@ pnpm i marked sanitize-html
 
 <br />
 
-按照我们之前的设计，当点击左侧笔记列表的时候，会导航至对应的 `/note/xxxx` 路由，所以我们再新建一个 [app/note/[id]/page.tsx](app/note/[id]/page.tsx) 文件，代码如下：
+按照我们之前的设计，当点击左侧笔记列表的时候，会导航至对应的 `/note/xxxx` 路由，所以我们再新建一个 [app/note/[id]/page.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_03/app/note/%5Bid%5D/page.tsx) 文件，代码如下：
 
 ```ts
 import Note from "@/components/Note";
@@ -46,7 +46,7 @@ export default async function Page({ params }) {
 }
 ```
 
-用到数据请求的地方，考虑一下是否需要用 `Suspense` 和 `loading.js`。这里就是一个很适合用 `loading.js` 的地方，我们再添加一个 [app/note/[id]/loading.tsx](app/note/[id]/loading.tsx) 文件，代码如下：
+用到数据请求的地方，考虑一下是否需要用 `Suspense` 和 `loading.js`。这里就是一个很适合用 `loading.js` 的地方，我们再添加一个 [app/note/[id]/loading.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_03/app/note/%5Bid%5D/loading.tsx) 文件，代码如下：
 
 ```ts
 export default function NoteSkeleton() {
@@ -78,7 +78,7 @@ export default function NoteSkeleton() {
 }
 ```
 
-我们在 `page.js` 中引入了 `<Note>` 组件，[app/components/Note.tsx](app/components/Note.tsx) 的代码如下：
+我们在 `page.js` 中引入了 `<Note>` 组件，[app/components/Note.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_03/app/components/Note.tsx) 的代码如下：
 
 ```ts
 import dayjs from "dayjs";
@@ -104,7 +104,7 @@ export default function Note({ noteId, note }) {
 }
 ```
 
-这里我们把预览的部分又单独抽离成了一个 `<NotePreview>` 组件，之所以抽离，是考虑到在编辑界面复用。[app/components/NotePreview.tsx](app/components/NotePreview.tsx) 的代码如下：
+这里我们把预览的部分又单独抽离成了一个 `<NotePreview>` 组件，之所以抽离，是考虑到在编辑界面复用。[app/components/NotePreview.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_03/app/components/NotePreview.tsx) 的代码如下：
 
 ```ts
 import { marked } from "marked";
@@ -175,7 +175,7 @@ export default function NotePreview({ children }) {
 
 ## 四、页面缓存
 
-在 `Nextjs15`中配置缓存需要在 [next.config.ts](next.config.ts)中配置，
+在 `Nextjs15`中配置缓存需要在 [next.config.ts](https://github.com/IsMShmily/nextjs_teaching/blob/notes_03/next.config.ts)中配置，
 增加代码如下：
 
 ```ts
