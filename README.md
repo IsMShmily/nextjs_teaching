@@ -12,7 +12,7 @@
 
 ## 二、修改根布局和其他页面
 
-修改 [app/components/SidebarNoteList.tsx](app/components/SidebarNoteList.tsx)：
+修改 [app/components/SidebarNoteList.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_02/app/components/SidebarNoteList.tsx)：
 
 ```ts
 import SidebarNoteItem from "@/components/SidebarNoteItem";
@@ -40,7 +40,7 @@ export default async function NoteList({ notes }) {
 
 这里我们将具体的每条笔记抽离成单独的 `SidebarNoteItem` 组件，
 
-[app/components/SidebarNoteItem.tsx](app/components/SidebarNoteItem.tsx) 代码如下：
+[app/components/SidebarNoteItem.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_02/app/components/SidebarNoteItem.tsx) 代码如下：
 
 ```ts
 import dayjs from "dayjs";
@@ -69,7 +69,7 @@ export default function SidebarNoteItem({ noteId, note }) {
 
 这里我们又抽离了一个 `SidebarNoteItemContent` 组件，用来实现展开和收回功能，我们将笔记的标题和时间的 `JSX` 作为 `children` 传递给了 `SidebarNoteItemContent`
 
-[app/components/SidebarNoteItemContent.tsx](app/components/SidebarNoteItemContent.tsx) 代码如下：
+[app/components/SidebarNoteItemContent.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_02/app/components/SidebarNoteItemContent.tsx) 代码如下：
 
 ```ts
 "use client";
@@ -196,7 +196,7 @@ export default function SidebarNoteContent({
 
 因为我们现在将笔记列表数据的获取放在了顶层，所以直接为 `SidebarNoteList` 添加 `Suspense` 是没有效果的，我们需要将数据获取改为在 `SidebarNoteList` 组件内部。
 
-修改 [app/components/Sidebar.tsx](app/components/Sidebar.tsx) 代码如下：
+修改 [app/components/Sidebar.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_02/app/components/Sidebar.tsx) 代码如下：
 
 ```ts
 import React, { Suspense } from "react";
@@ -236,7 +236,7 @@ export default async function Sidebar() {
 }
 ```
 
-添加 [app/components/NoteListSkeleton.tsx](app/components/NoteListSkeleton.tsx)，代码如下：
+添加 [app/components/NoteListSkeleton.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_02/app/components/NoteListSkeleton.tsx)，代码如下：
 
 ```ts
 export default function NoteListSkeleton() {
@@ -267,7 +267,7 @@ export default function NoteListSkeleton() {
 }
 ```
 
-[app/components/SidebarNoteList.tsx](app/components/SidebarNoteList.tsx) 代码如下，为了让效果更加明显，我们添加了一个 `sleep` 函数：
+[app/components/SidebarNoteList.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_02/app/components/SidebarNoteList.tsx) 代码如下，为了让效果更加明显，我们添加了一个 `sleep` 函数：
 
 ```ts
 import SidebarNoteItem from "../components/SidebarNoteItem";
