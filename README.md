@@ -12,6 +12,35 @@
 
 - `TypeScript` 支持、`CSS Modules`、图像优化等开箱即用功能。
 
+<br />
+
+## 学到什么？
+
+通过本仓库你将学到：
+
+基于最新的 `Next.js v15` 官方文档，循序渐进讲解 `Next Cli`、`App Router`、路由处理程序、中间件、数据获取与缓存机制、` React Server Component`、服务端组件、客户端组件、`Server Actions `、`Streaming` 等内容。
+
+<br />
+
+实战：
+`React Notes`
+
+技术栈：
+
+<p>
+
+  <img alt="next" src="https://img.shields.io/badge/-Next-%23000?style=flat-square&logo=nextdotjs">
+   <img alt="Static Badge" src="https://img.shields.io/badge/-Mysql-%23000000?style=flat-square&logo=mysql">
+  <img alt="Static Badge" src="https://img.shields.io/badge/-redis-%2523000?style=flat-square&logo=redis&labelColor=%23000&color=%23000">
+<img alt="Static Badge" src="https://img.shields.io/badge/-Auth-%2523000?style=flat-square&logo=auth0&labelColor=%23000&color=%23000">
+<img alt="Static Badge" src="https://img.shields.io/badge/-prisma-%2523000?style=flat-square&logo=prisma&labelColor=%23000&color=%23000">
+<img alt="Static Badge" src="https://img.shields.io/badge/-i18n-%2523000?style=flat-square&logo=i18next&labelColor=%23000&color=%23000">
+<img alt="Static Badge" src="https://img.shields.io/badge/-strapi-%2523000?style=flat-square&logo=strapi&labelColor=%23000&color=%23000">
+  <img alt="Static Badge" src="https://img.shields.io/badge/-Docker-%23000?style=flat-square&logo=docker">
+<img alt="Static Badge" src="https://img.shields.io/badge/-vercel-%2523000?style=flat-square&logo=vercel&labelColor=%23000&color=%23000">
+
+</p>
+
 ## 一、运行
 
 ```bash
