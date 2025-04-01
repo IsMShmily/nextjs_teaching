@@ -206,7 +206,7 @@ bun dev
 
 - **[notes_03](https://github.com/IsMShmily/nextjs_teaching/tree/notes_03)**
   - 预览界面实现
-  - RSC Payload
-  - 路由缓存
+  - 原理解析
+  - 页面缓存
 
 ---
