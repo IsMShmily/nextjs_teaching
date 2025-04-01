@@ -169,6 +169,15 @@ bun dev
 
 - **[notes_02](https://github.com/IsMShmily/nextjs_teaching/tree/notes_02)**
   - SidebarNoteList 侧边栏优化
-  - 使用 Suspense 实现骨架图的效果 
+  - 使用 Suspense 实现骨架图的效果
+
+---
+
+### 16、实战：`React Notes` 预览界面实现
+
+- **[notes_03](https://github.com/IsMShmily/nextjs_teaching/tree/notes_03)**
+  - 预览界面实现
+  - RSC Payload
+  - 路由缓存
 
 ---
