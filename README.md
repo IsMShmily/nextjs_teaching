@@ -10,7 +10,7 @@
 
 ## 二、修改根布局和其他页面
 
-修改 [app/page.tsx](app/page.tsx)：
+修改 [app/page.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_01/app/page.tsx)：
 
 ```ts
 // app/page.js
@@ -28,7 +28,7 @@ export default async function Page() {
 <br />
 <br />
 
-修改 [app/layout.tsx](app/layout.tsx)：
+修改 [app/layout.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_01/app/layout.tsx)：
 
 ```ts
 import "./style.css";
@@ -53,7 +53,7 @@ export default async function RootLayout({ children }) {
 <br />
 <br />
 
-新建 [app/components/Sidebar.tsx](app/components/Sidebar.tsx)，代码为：
+新建 [app/components/Sidebar.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_01/app/components/Sidebar.tsx)，代码为：
 
 ```ts
 import React from "react";
@@ -123,7 +123,7 @@ pnpm i ioredis
 
 ## 四、 redis 的 CURD
 
-新建 [lib/redis.ts](lib/redis.ts) 代码如下：
+新建 [lib/redis.ts](https://github.com/IsMShmily/nextjs_teaching/blob/notes_01/lib/redis.ts) 代码如下：
 
 ```ts
 import Redis from "ioredis";
@@ -207,7 +207,7 @@ export default redis;
 
 ## 五、修改组件 Sidebar
 
-修改 [app/components/Sidebar.tsx](app/components/Sidebar.tsx) 内容为
+修改 [app/components/Sidebar.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_01/app/components/Sidebar.tsx) 内容为
 
 ```ts
 import React from "react";
@@ -234,7 +234,7 @@ export default async function Sidebar() {
 
 ## 六、新增 SidebarNoteList
 
-新增 [app/components/SidebarNoteList.tsx](app/components/SidebarNoteList.tsx) 代码：
+新增 [app/components/SidebarNoteList.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_01/app/components/SidebarNoteList.tsx) 代码：
 
 ```ts
 export default async function NoteList({ notes }) {
@@ -280,7 +280,7 @@ export default async function NoteList({ notes }) {
 pnpm i dayjs
 ```
 
-修改 [app/components/SidebarNoteList.tsx](app/components/SidebarNoteList.tsx)为：
+修改 [app/components/SidebarNoteList.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_01/app/components/SidebarNoteList.tsx)为：
 
 ```ts
   // 新增
