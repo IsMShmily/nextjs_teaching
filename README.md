@@ -210,3 +210,10 @@ bun dev
   - 页面缓存
 
 ---
+
+### 17、实战：`React Notes` 编辑实现
+
+- **[notes_04](https://github.com/IsMShmily/nextjs_teaching/tree/notes_04)**
+  - 笔记的编辑与删除
+
+---
