@@ -16,7 +16,7 @@
 
 回忆下之前的路由设计，当点击 New 的时候，导航至 `/note/edit` 路由，当点击 Edit 的时候，导航至 `/note/edit/xxxx `路由。
 
-新增 [app/note/edit/page.tsx](app/note/edit/page.tsx)
+新增 [app/note/edit/page.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_04/app/note/edit/page.tsx)
 
 ```ts
 import NoteEditor from "../../components/NoteEditor";
@@ -26,7 +26,7 @@ export default async function EditPage() {
 }
 ```
 
-新增 [app/note/edit/loading.tsx](app/note/edit/loading.tsx)
+新增 [app/note/edit/loading.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_04/app/note/edit/loading.tsx)
 
 ```ts
 export default function EditSkeleton() {
@@ -70,9 +70,9 @@ export default function EditSkeleton() {
 
 你可能会问，同级的 page.js 又没有数据请求，添加 loading.js 有什么用？
 
-同级的 `page.js` 确实没有请求，但 `loading.js` 会将 `page.js` 和其 `children` 都包裹在 `<Suspense>` 中，所以 [app/note/edit/[id]/page.tsx](app/note/edit/[id]/page.tsx) 中的请求也会触发该 `loading.js`。
+同级的 `page.js` 确实没有请求，但 `loading.js` 会将 `page.js` 和其 `children` 都包裹在 `<Suspense>` 中，所以 [app/note/edit/[id]/page.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_04/app/note/edit/%5Bid%5D/page.tsx) 中的请求也会触发该 `loading.js`。
 
-[app/note/edit/[id]/page.tsx](app/note/edit/[id]/page.tsx) 代码如下：
+[app/note/edit/[id]/page.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_04/app/note/edit/%5Bid%5D/page.tsx) 代码如下：
 
 ```ts
 import NoteEditor from "../../../components/NoteEditor";
@@ -106,7 +106,7 @@ export default async function EditPage({ params }: { params: { id: string } }) {
 }
 ```
 
-我们抽离了一个 `<NoteEditor>` 组件用于实现编辑功能，[app/components/NoteEditor.tsx](app/components/NoteEditor.tsx) 代码如下：
+我们抽离了一个 `<NoteEditor>` 组件用于实现编辑功能，[app/components/NoteEditor.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_04/app/components/NoteEditor.tsx) 代码如下：
 
 ```ts
 "use client";
@@ -197,7 +197,7 @@ export default function NoteEditor({ noteId, initialTitle, initialBody }) {
 
 正常开发笔记的增加、更新和删除功能，为了实现前后端交互，可能要写多个接口来实现，比如当点击删除的时候，调用删除接口，接口返回成功，前端跳转至首页。但既然我们都用了 `Next.js 15` 了，没必要这么麻烦，`Server Actions` 直接搞定，省的一个个写接口了。
 
-修改 [app/components/NoteEditor.tsx](app/components/NoteEditor.tsx)
+修改 [app/components/NoteEditor.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_04/app/components/NoteEditor.tsx)
 
 ```ts
 "use client";
@@ -275,7 +275,7 @@ export default function NoteEditor({
 }
 ```
 
-新增：[app/actions.tsx](app/actions.tsx)
+新增：[app/actions.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_04/app/actions.tsx)
 
 ```ts
 "use server";
