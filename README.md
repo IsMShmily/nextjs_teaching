@@ -1,31 +1,35 @@
-## Next.js 教学
+<div align="right">
+  <a href="README.md">English</a> | <a href="README.cn.md">中文</a>
+</div>
 
-`Next.js` 是基于 `React` 的全栈框架，专为构建高性能、`SEO` 友好的现代 `Web` 应用设计。
+## Next.js Tutorial
 
-核心优势：
+`Next.js` is a full-stack framework based on `React`, specifically designed for building high-performance, `SEO`-friendly modern `Web` applications.
 
-- 服务端渲染 (`SSR`) 和 静态站点生成 (`SSG`)：提升加载速度和 `SEO`。
+Core advantages:
 
-- 内置路由系统：文件即路由，无需手动配置。
+- Server-Side Rendering (`SSR`) and Static Site Generation (`SSG`): Improves loading speed and `SEO`.
 
-- `API` 路由：轻松创建后端接口。
+- Built-in routing system: File-based routing, no manual configuration required.
 
-- `TypeScript` 支持、`CSS Modules`、图像优化等开箱即用功能。
+- `API` routes: Easily create backend interfaces.
 
-<br />
-
-## 学到什么？
-
-通过本仓库你将学到：
-
-基于最新的 `Next.js v15` 官方文档，循序渐进讲解 `Next Cli`、`App Router`、路由处理程序、中间件、数据获取与缓存机制、` React Server Component`、服务端组件、客户端组件、`Server Actions `、`Streaming` 等内容。
+- `TypeScript` support, `CSS Modules`, image optimization, and other out-of-the-box features.
 
 <br />
 
-实战：
+## What Will You Learn?
+
+Through this repository, you will learn:
+
+Based on the latest `Next.js v15` official documentation, we will progressively explain `Next Cli`, `App Router`, route handlers, middleware, data fetching and caching mechanisms, `React Server Component`, server components, client components, `Server Actions`, `Streaming`, and more.
+
+<br />
+
+Practical Project:
 `React Notes`
 
-技术栈：
+Tech Stack:
 
 <p>
 
@@ -41,13 +45,13 @@
 
 </p>
 
-## 一、运行
+## 1. Running the Project
 
 ```bash
-# 下载依赖
+# Install dependencies
 npm i
 
-# 运行项目
+# Run the project
 npm run dev
 # or
 yarn dev
@@ -57,164 +61,164 @@ pnpm dev
 bun dev
 ```
 
-打开 [http://localhost:3000](http://localhost:3000)用你的浏览器查看结果。
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the results.
 
-## 二、学习目录
+## 2. Learning Directory
 
-### 1、`next.js `基础
+### 1. `Next.js` Basics
 
 - **[test_01/page_layout_template_loading](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/page_layout_template_loading)**
-  - 文件系统、page、layout、template、loading 组件介绍
+  - Introduction to file system, page, layout, template, and loading components
 - **[test_01/layout_template_status_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_01/layout_template_status_demo)**
-  - layout 与 template 组件的区别 dmeo
+  - Demo of differences between layout and template components
 
 ---
 
-### 2、`<Link>`与`useRouter` 介绍
+### 2. Introduction to `<Link>` and `useRouter`
 
 - **[test_02/link_useRouter](https://github.com/IsMShmily/nextjs_teaching/tree/test_02/link_useRouter?tab=readme-ov-file)**
-  - link、useRoouter、redirect 的使用
+  - Usage of link, useRouter, and redirect
 
 ---
 
-### 3、`next routes` 介绍
+### 3. Introduction to `Next Routes`
 
 - **[test_03/routes_detail](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/routes_detail?tab=readme-ov-file)**
-  - 动态路由、路由组、平行路由、拦截路由讲解
+  - Dynamic routes, route groups, parallel routes, and intercepting routes
 - **[test_03/InterceptingRoutes_demo](https://github.com/IsMShmily/nextjs_teaching/tree/test_03/InterceptingRoutes_demo?tab=readme-ov-file)**
-  - 拦截路由 demo
+  - Intercepting routes demo
 
 ---
 
-### 4、`Route Handlers`的使用
+### 4. Using `Route Handlers`
 
 - **[test_04/route_handlers](https://github.com/IsMShmily/nextjs_teaching/tree/test_04/route_handlers?tab=readme-ov-file)**
-  - 约定
-  - Request Method 的使用
-  - 获取请求参数
-  - 常见问题
+  - Conventions
+  - Request Method usage
+  - Getting request parameters
+  - Common issues
 
 ---
 
-### 5、`Middleware` 的使用与介绍
+### 5. Introduction and Usage of `Middleware`
 
 - **[test_05/Middleware](https://github.com/IsMShmily/nextjs_teaching/tree/test_05/Middleware?tab=readme-ov-file)**
-  - Middleware 的使用
-  - Middleware Cookies 的使用
-  - Middleware Headers 的使用
-  - Middleware CORS 的使用
-  - Middleware 如何响应
+  - Middleware usage
+  - Middleware Cookies usage
+  - Middleware Headers usage
+  - Middleware CORS usage
+  - How Middleware responds
 
 ---
 
-### 6、`Nextjs` 中的 `CSR、SSR、SSG、ISR` 的使用与介绍
+### 6. Introduction and Usage of `CSR, SSR, SSG, ISR` in `Nextjs`
 
 - **[test_06/CSR_SSR_SSG_ISR](https://github.com/IsMShmily/nextjs_teaching/tree/test_06/CSR_SSR_SSG_ISR?tab=readme-ov-file)**
-  - CSR 的使用
-  - SSR 的使用
-  - SSG 的使用
-  - ISR 的使用
+  - CSR usage
+  - SSR usage
+  - SSG usage
+  - ISR usage
 
 ---
 
-### 7、`Nextjs` 中的 `Server Component` 与 SSR
+### 7. `Server Component` and SSR in `Nextjs`
 
 - **[test_07/serverComponent_SSR](https://github.com/IsMShmily/nextjs_teaching/tree/test_07/serverComponent_SSR?tab=readme-ov-file)**
   - React Server Components (RSC)
-  - use client 指令
-  - React 服务器组件渲染生命周期
+  - use client directive
+  - React server component rendering lifecycle
 
 ---
 
-### 8、`Streaming` 流式传输
+### 8. `Streaming` Transmission
 
 - **[test_08/suspense_streaming](https://github.com/IsMShmily/nextjs_teaching/tree/test_08/suspense_streaming?tab=readme-ov-file)**
-  - 传统 SSR
-  - 如何实现 Streaming 流式传输
-    - 使用 Suspense 标签
-    - 使用 loading 页面组件
+  - Traditional SSR
+  - How to implement Streaming transmission
+    - Using Suspense tags
+    - Using loading page components
 
 ---
 
-### 9、`Nextjs`中的 服务端组件 与 客户端组件
+### 9. Server Components and Client Components in `Nextjs`
 
 - **[test_09/clientCompoent](https://github.com/IsMShmily/nextjs_teaching/tree/test_09/clientComponent)**
-  - 客户端组件
-    - 使用 Client Components
-    - Client Components 如何呈现
-  - 如何使用 Client Component
-    - 基本使用
-    - 最佳实践
-  - 服务端组件 VS 客户端组件
+  - Client Components
+    - Using Client Components
+    - How Client Components are rendered
+  - How to use Client Components
+    - Basic usage
+    - Best practices
+  - Server Components vs Client Components
 
 ---
 
-### 10、`Nextjs` 中的 服务端渲染策略
+### 10. Server Rendering Strategies in `Nextjs`
 
 - **[text_10/server_renderer_tactics](https://github.com/IsMShmily/nextjs_teaching/tree/text_10/server_renderer_tactics)**
-  - 静态渲染
-  - 动态渲染
-  - 局部渲染
+  - Static rendering
+  - Dynamic rendering
+  - Partial rendering
 
 ---
 
-### 11、`Nextjs` Server Actions 使用
+### 11. Using `Nextjs` Server Actions
 
 - **[test_11/server_actions](https://github.com/IsMShmily/nextjs_teaching/tree/test_11/server_actions)**
-  - 基本用法
-  - 使用 Server Actions 实现 TODOList
+  - Basic usage
+  - Implementing TODOList using Server Actions
 
 ---
 
-### 12、`Nextjs` 中的 Caching
+### 12. Caching in `Nextjs`
 
 - **[test_12/caching](https://github.com/IsMShmily/nextjs_teaching/tree/test_12/caching)**
-  - 概述
-  - 请求记忆
-  - 数据缓存
+  - Overview
+  - Request memoization
+  - Data caching
 
 ---
 
-### 13、`Nextjs` 中的环境变量和路径别名
+### 13. Environment Variables and Path Aliases in `Nextjs`
 
 - **[test_13/env_src_alias](https://github.com/IsMShmily/nextjs_teaching/tree/test_13/env_src_alias)**
-  - 环境变量的使用
-    - 服务器组件中使用
-    - 路由处理程序中使用
-    - 浏览器中使用
-  - 路径别名的使用
+  - Using environment variables
+    - In server components
+    - In route handlers
+    - In the browser
+  - Using path aliases
 
 ---
 
-### 14、实战：`React Notes` 项目初始化
+### 14. Practical: `React Notes` Project Initialization
 
 - **[notes_01](https://github.com/IsMShmily/nextjs_teaching/tree/notes_01)**
-  - React Notes 项目结构搭建
-  - redis 的基本使用
+  - React Notes project structure setup
+  - Basic Redis usage
 
 ---
 
-### 15、实战：`SidebarNoteList`优化和`Suspense`的使用
+### 15. Practical: `SidebarNoteList` Optimization and `Suspense` Usage
 
 - **[notes_02](https://github.com/IsMShmily/nextjs_teaching/tree/notes_02)**
-  - SidebarNoteList 侧边栏优化
-  - 使用 Suspense 实现骨架图的效果
+  - SidebarNoteList sidebar optimization
+  - Implementing skeleton loading effect using Suspense
 
 ---
 
-### 16、实战：`React Notes` 预览界面实现
+### 16. Practical: `React Notes` Preview Interface Implementation
 
 - **[notes_03](https://github.com/IsMShmily/nextjs_teaching/tree/notes_03)**
-  - 预览界面实现
-  - 原理解析
-  - 页面缓存
+  - Preview interface implementation
+  - Principle analysis
+  - Page caching
 
 ---
 
-### 17、实战：`React Notes CURD` 实现
+### 17. Practical: `React Notes CRUD` Implementation
 
 - **[notes_04](https://github.com/IsMShmily/nextjs_teaching/tree/notes_04)**
-  - 笔记预览
-  - 笔记新增、更新、删除
+  - Note preview
+  - Note creation, update, and deletion
 
 ---
