@@ -211,9 +211,10 @@ bun dev
 
 ---
 
-### 17、实战：`React Notes` 编辑实现
+### 17、实战：`React Notes CURD` 实现
 
 - **[notes_04](https://github.com/IsMShmily/nextjs_teaching/tree/notes_04)**
-  - 笔记的编辑与删除
+  - 笔记预览
+  - 笔记新增、更新、删除
 
 ---
