@@ -22,7 +22,7 @@ export default async function Sidebar() {
           </section>
         </Link>
         <section className="sidebar-menu" role="menubar">
-          <EditButton noteId={null}>New</EditButton>
+          <EditButton noteId={""}>New</EditButton>
         </section>
         <nav>
           <Suspense fallback={<NoteListSkeleton />}>

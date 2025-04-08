@@ -12,7 +12,7 @@ export default async function Page({
 
   // 为了让 Suspense 的效果更明显
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-  await sleep(5000);
+  await sleep(500);
 
   if (note == null) {
     return (
