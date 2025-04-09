@@ -222,3 +222,10 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
   - Note creation, update, and deletion
 
 ---
+
+### 18. Practical: `React Notes` Search Function Implementation
+
+- **[notes_05](https://github.com/IsMShmily/nextjs_teaching/tree/notes_05)**
+  - Note search functionality
+
+---

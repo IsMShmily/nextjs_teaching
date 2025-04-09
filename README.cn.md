@@ -218,3 +218,10 @@ bun dev
   - 笔记新增、更新、删除
 
 ---
+
+### 18、实战：`React Notes` 搜索功能实现
+
+- **[notes_05](https://github.com/IsMShmily/nextjs_teaching/tree/notes_05)**
+  - 笔记搜索
+
+---
