@@ -8,7 +8,7 @@
 
 ## 二、搜索实现
 
-[app/components/Sidebar.tsx](app/components/Sidebar.tsx) 导入搜索栏组件：
+[app/components/Sidebar.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_05/app/components/Sidebar.tsx) 导入搜索栏组件：
 
 ```ts
 import React, { Suspense } from "react";
@@ -52,7 +52,7 @@ export default async function Sidebar() {
 }
 ```
 
-新增 [app/components/SidebarSearchField.tsx](app/components/SidebarSearchField.tsx) 代码如下：
+新增 [app/components/SidebarSearchField.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_05/app/components/SidebarSearchField.tsx) 代码如下：
 
 ```ts
 "use client";
@@ -105,7 +105,7 @@ export default function SidebarSearchField() {
 }
 ```
 
-新增 [app/components/SidebarNoteListFilter.tsx](app/components/SidebarNoteListFilter.tsx) 代码如下
+新增 [app/components/SidebarNoteListFilter.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_05/app/components/SidebarNoteListFilter.tsx) 代码如下
 
 ```ts
 "use client";
@@ -148,7 +148,7 @@ export default function SidebarNoteList({ notes }: { notes: any }) {
 }
 ```
 
-修改 [app/components/SidebarNoteList.tsx](app/components/SidebarNoteList.tsx) 代码如下
+修改 [app/components/SidebarNoteList.tsx](https://github.com/IsMShmily/nextjs_teaching/blob/notes_05/app/components/SidebarNoteList.tsx) 代码如下
 
 ```ts
 import SidebarNoteListFilter from "./SidebarNoteListFilter";
